@@ -12,7 +12,7 @@ class SketchLogin extends React.Component {
     render() {
         return (
             <div className='row'>
-                <div className='col-md-12'>
+                <div className='col-12'>
                     <div className='text-center vertical-center'>              
                         <div id='login-box' className='card'>
                             <div className='card-header font-weight-bold'>Login</div>

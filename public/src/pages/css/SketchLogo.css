@@ -1,5 +1,6 @@
 #sketch-logo {
 	position: relative;
-	width: 75vw;
-	height: 20vh;
+	left: 22.5%;
+	max-width: 621px;
+	height: auto;
 }
