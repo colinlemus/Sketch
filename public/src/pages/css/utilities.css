@@ -1,0 +1,16 @@
+.vertical-center {
+    min-height: 50%;
+    min-height: 50vh;
+
+    display: flex;
+    align-items: center;
+}
+
+.vertical-center-top {
+    min-height: 25%;
+    min-height: 25vh;
+    left: 50%;
+
+    display: flex;
+    align-items: center;
+}
