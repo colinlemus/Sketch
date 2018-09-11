@@ -24,7 +24,7 @@ class SketchLogin extends React.Component {
                                     <input type="text" className="form-control" name="password" placeholder="Password" required="required" />
                                 </div>
                                 <div className="form-group">
-                                    <button type="submit" className="btn btn-primary btn-lg btn-block login-btn" style={button}>Login</button>
+                                    <button type="submit" className="btn btn-primary btn-lg btn-block login-btn" style={button} onClick={this.handleClick}>Login</button>
                                 </div>
                             </div>
                         </div>
@@ -32,6 +32,10 @@ class SketchLogin extends React.Component {
                 </div>
             </div>
         );
+    }
+
+    handleClick() {
+        console.log("it works.");
     }
 }
   
