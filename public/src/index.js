@@ -4,6 +4,8 @@ import './index.css';
 import SketchLogin from './pages/Index'
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
+import SketchCanvas from './components/game';
+import CanvasDraw from './components/draw';
 
 class App extends React.Component{ 
   render () {
@@ -14,6 +16,8 @@ class App extends React.Component{
         </nav> */}
         <div>
           <Route path="/login" component={SketchLogin}/>
+          <Route path="/canvas" component={SketchCanvas}/>
+          <Route path="/draw" component={CanvasDraw}/>
         </div>
         {/* <div>
           <Route path="/" component={}/>
