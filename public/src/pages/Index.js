@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import SketchLogin from '../components/login';
 import SketchLogo from '../components/sketchlogo';
-import * as LoginJS from '../pages/javascript/login.js';
-
-const container = {
-	
-}
 
 class Index extends Component {
 	constructor() {
@@ -13,7 +8,7 @@ class Index extends Component {
 	}
 
 	componentDidMount() {
-		LoginJS.log("Test.");
+		//whenever the page first loads
 	}
 
 	render() {
