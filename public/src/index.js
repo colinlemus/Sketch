@@ -4,26 +4,20 @@ import './index.css';
 import Index from './pages/Index'
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import CanvasDraw from './components/draw';
-import GameChat from './pages/game-chat';
+import CanvasDraw from './components/DrawCanvas';
+import GameChat from './components/ChatComponent';
 
 class App extends React.Component { 
   render () {
     return (
       <div>
-        {/* <nav>
-          <Link to="/home">Login Page</Link>
-        </nav> */}
         <div>
-          <Route path="/login" component={Index}/>
-          <Route path="/draw" component={CanvasDraw}/>
+          <Route path='/login' component={Index}/>
+          <Route path='/draw' component={CanvasDraw}/>
         </div>
         <div>
-          <Route path="/game-chat" component={GameChat}/>
+          <Route path='/game-chat' component={GameChat}/>
         </div>
-        {/* <div>
-          <Route path="/" component={}/>
-        </div> */}
     </div>
     )
   }
@@ -32,6 +26,7 @@ class App extends React.Component {
 ReactDOM.render(
   (<BrowserRouter> 
     <App />
-  </BrowserRouter>), document.getElementById('root'));
+  </BrowserRouter>), document.getElementById('root')
+);
 
 registerServiceWorker();

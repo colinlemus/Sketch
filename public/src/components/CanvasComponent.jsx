@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-var colorRed = "#FF0000"
+import React, { Component } from 'react';
+var colorRed = '#FF0000'
 export default class extends Component {
   static defaultProps = {
     loadTimeOffset: 5,
@@ -30,14 +30,14 @@ export default class extends Component {
 
   loadSaveData = (saveData, immediate) => {
     try {
-      if (typeof saveData !== "string") {
-        throw new Error("saveData needs to be a stringified array!");
+      if (typeof saveData !== 'string') {
+        throw new Error('saveData needs to be a stringified array!');
       }
       // parse first to catch any possible errors before clear()
       const { linesArray, width, height } = JSON.parse(saveData);
 
-      if (!linesArray || typeof linesArray.push !== "function") {
-        throw new Error("linesArray needs to be an array!");
+      if (!linesArray || typeof linesArray.push !== 'function') {
+        throw new Error('linesArray needs to be an array!');
       }
 
       // start the load-process
@@ -141,7 +141,7 @@ export default class extends Component {
 
     this.ctx.strokeStyle = line.color;
     this.ctx.lineWidth = line.size;
-    this.ctx.lineCap = "round";
+    this.ctx.lineCap = 'round';
     this.ctx.beginPath();
     this.ctx.moveTo(line.startX, line.startY);
     this.ctx.lineTo(line.endX, line.endY);
@@ -191,7 +191,7 @@ export default class extends Component {
     this.linesArray.push(line);
 
     // notify parent that a new line was added
-    if (typeof this.props.onChange === "function") {
+    if (typeof this.props.onChange === 'function') {
       this.props.onChange(this.linesArray);
     }
 
@@ -206,14 +206,14 @@ export default class extends Component {
         width={this.props.canvasWidth}
         height={this.props.canvasHeight}
         style={{
-          background: "#fff",
-          touchAction: "none",
+          background: '#fff',
+          touchAction: 'none',
           ...this.props.style
         }}
         ref={canvas => {
           if (canvas) {
             this.canvas = canvas;
-            this.ctx = canvas.getContext("2d");
+            this.ctx = canvas.getContext('2d');
           }
         }}
         onMouseDown={this.drawStart}

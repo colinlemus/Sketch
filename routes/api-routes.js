@@ -2,38 +2,38 @@ var db = require('../models');
 
 module.exports = app => {
 	app.get('/api/login', (req, res) => {
-		db['login'].findAll({}).then(dbLogin => {
-			res.json(dbLogin);
+		db['userData'].findAll({}).then(dbUserData => {
+			res.json(dbUserData);
 		});
 	});
 
-	app.post('/api/login', (req, res) => {
-		db['login'].create({
+	app.post('/api/userData', (req, res) => {
+		db['userData'].create({
             email: req['body']['email'],
             username: req['body']['username'],
 			password: req['body']['password']
-		}).then(dbLogin => {
-			res.json(dbLogin);
+		}).then(dbUserData => {
+			res.json(dbUserData);
 		});
 	});
 
-	app.get('/api/login/:id', (req, res) => {
-		db['login'].findOne({
+	app.get('/api/userData/:id', (req, res) => {
+		db['userData'].findOne({
 			where: {
 				id: req['params']['id']
 			}
-		}).then(dbLogin => {
-			res.json(dbLogin);
+		}).then(dbUserData => {
+			res.json(dbUserData);
 		});
 	});
 
-	app.put('/api/login', (req, res) => {
-		db['login'].update(req['body'], {
+	app.put('/api/userData', (req, res) => {
+		db['userData'].update(req['body'], {
 			where: {
 				id: req['body']['id']
 			}
-		}).then(dbLogin => {
-			res.json(dbLogin);
+		}).then(dbUserData => {
+			res.json(dbUserData);
 		});
 	});
 };

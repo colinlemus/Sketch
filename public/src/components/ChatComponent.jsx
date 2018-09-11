@@ -1,11 +1,8 @@
-
 import React, { Component } from 'react';
 import { Widget, toggleWidget, addResponseMessage, addLinkSnippet, addUserMessage, senderPlaceHolder } from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
 
 // import logo from './logo.svg';
-
-
 class App extends Component {
     componentDidMount() {
         addResponseMessage("Welcome to this awesome chat!");
