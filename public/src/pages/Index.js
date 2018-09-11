@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import SketchLogin from '../components/login';
 import SketchLogo from '../components/sketchlogo';
+<<<<<<< Updated upstream
+=======
+import * as LoginJS from '../pages/javascript/login.js';
+>>>>>>> Stashed changes
 
 class Index extends Component {
 	constructor() {

@@ -16,7 +16,6 @@ class App extends React.Component {
         </nav> */}
         <div>
           <Route path="/login" component={Index}/>
-          <Route path="/canvas" component={SketchCanvas}/>
           <Route path="/draw" component={CanvasDraw}/>
         </div>
         {/* <div>
