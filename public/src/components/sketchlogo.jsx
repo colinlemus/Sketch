@@ -8,7 +8,7 @@ class SketchLogo extends React.Component {
             <div className='row'>
                 <div className='col-12'>
                     <div className='text-center vertical-center-top'>
-                        <img id="sketch-logo" src="https://skribbl.io/res/logo.gif" alt=""></img>
+                        <img id="sketch-logo" src="https://skribbl.io/res/logo.gif" alt="Logo"></img>
                     </div>
                 </div>
             </div>
