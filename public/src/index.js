@@ -4,8 +4,8 @@ import './index.css';
 import Index from './pages/Index'
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import SketchCanvas from './components/game';
 import CanvasDraw from './components/draw';
+import GameChat from './pages/game-chat';
 
 class App extends React.Component { 
   render () {
@@ -17,6 +17,9 @@ class App extends React.Component {
         <div>
           <Route path="/login" component={Index}/>
           <Route path="/draw" component={CanvasDraw}/>
+        </div>
+        <div>
+          <Route path="/game-chat" component={GameChat}/>
         </div>
         {/* <div>
           <Route path="/" component={}/>
