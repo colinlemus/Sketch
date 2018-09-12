@@ -6,10 +6,9 @@
     align-items: center;
 }
 
-.vertical-center-top {
-    min-height: 33%;
-    min-height: 33vh;
-
-    display: flex;
-    align-items: center;
+.center-single-item {
+    height: '100vh';
+    align-items: 'center';
+    justify-content: 'middle';
+    display: 'flex';
 }

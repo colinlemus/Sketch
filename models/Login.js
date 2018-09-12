@@ -25,6 +25,22 @@ module.exports = function(sequelize, DataTypes) {
 				notNull: false
 			}
 		},
+		firstName: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				len: [1,255],
+				notNull: false
+			}
+		},
+		lastName: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				len: [1,255],
+				notNull: false
+			}
+		}
 	});
 	
 	return UserData;
