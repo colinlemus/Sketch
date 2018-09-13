@@ -11,13 +11,17 @@ module.exports = app => {
 		db['userData'].create({
             email: req['body']['email'],
             username: req['body']['username'],
-			password: req['body']['password']
+			password: req['body']['password'],
+			firstName: req['body']['firstName'],
+			lastName: req['body']['lastName']
 		}).then(dbUserData => {
 			res.json(dbUserData);
 		});
 	});
 
 	app.get('/api/userData/:id', (req, res) => {
+		console.log(req.params);
+		console.log(req.params.id);
 		db['userData'].findOne({
 			where: {
 				id: req['params']['id']
