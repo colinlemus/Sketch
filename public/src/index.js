@@ -6,8 +6,9 @@ import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import CanvasDraw from './components/DrawCanvas';
 import GameChat from './components/ChatComponent';
-import './pages/css/utilities.css';
+import SignUp from './components/SignUp';
 import SketchLogo from './components/SketchLogo';
+import './pages/css/utilities.css';
 
 class App extends React.Component { 
   render () {
@@ -18,6 +19,7 @@ class App extends React.Component {
             <Route exact path='/' component={Index} />
             <Route exact path='/draw' component={CanvasDraw} />
             <Route exact path='/game-chat' component={GameChat} />
+            <Route exact path='/sign-up' component={SignUp} />
             <Route path='/api' />
             <Route path='*' component={Handle404} />
           </Switch>

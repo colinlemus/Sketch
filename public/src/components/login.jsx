@@ -2,6 +2,7 @@ import React from 'react';
 import * as LoginJS from '../pages/javascript/login.js';
 import '../pages/css/SketchLogin.css';
 import '../pages/css/utilities.css';
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 const button = {
@@ -80,12 +81,12 @@ class SketchLogin extends React.Component {
                                         <button type='submit' className='btn btn-primary btn-lg btn-block login-btn' style={button} onClick={(event) => this.handleClick(event)}>Login</button>
                                     </div>
                                     <div className='row'>
-                                        <a href='/signup' className='col-6' style={signUp}>
-                                            Sign up!
-                                        </a>
-                                        <a href='/forgot' className='col-6' style={forgotPassword}>
-                                            Forgot password?
-                                        </a>
+                                        <div className='col-6' style={signUp}>
+                                            <Link to="/sign-up">Sign up!</Link>
+                                        </div>
+                                        <div className='col-6' style={forgotPassword}>
+                                            <Link to="/forgot">Forgot password?</Link>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
