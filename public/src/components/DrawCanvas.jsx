@@ -226,35 +226,35 @@ export default class CanvasDraw extends React.Component {
                 <div className='col-12'>
                     <div>
                         <input onChange={this.handleColorChange} value={this.brushColor} />
-                    <div className='text-center'>            
-                        <canvas
-                        width={this.props.canvasWidth}
-                        height={this.props.canvasHeight}
-                        style={{
-                            background: '#fff',
-                            touchAction: 'none',
-                            ...this.props.style
-                        }}
-                        ref={canvas => {
-                            if (canvas) {
-                            this.canvas = canvas;
-                            this.ctx = canvas.getContext('2d');
-                            }
-                        }}
-                        onMouseDown={this.drawStart}
-                        onClick={() => false}
-                        onMouseUp={this.drawEnd}
-                        onMouseOut={this.drawEnd}
-                        onMouseMove={this.draw}
-                        onTouchStart={this.drawStart}
-                        onTouchMove={this.draw}
-                        onTouchEnd={this.drawEnd}
-                        onTouchCancel={this.drawEnd}
-                    />
+                        <div className='text-center'>            
+                            <canvas
+                                width={this.props.canvasWidth}
+                                height={this.props.canvasHeight}
+                                style={{
+                                    background: '#fff',
+                                    touchAction: 'none',
+                                    ...this.props.style
+                                }}
+                                ref={canvas => {
+                                    if (canvas) {
+                                    this.canvas = canvas;
+                                    this.ctx = canvas.getContext('2d');
+                                    }
+                                }}
+                                onMouseDown={this.drawStart}
+                                onClick={() => false}
+                                onMouseUp={this.drawEnd}
+                                onMouseOut={this.drawEnd}
+                                onMouseMove={this.draw}
+                                onTouchStart={this.drawStart}
+                                onTouchMove={this.draw}
+                                onTouchEnd={this.drawEnd}
+                                onTouchCancel={this.drawEnd}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
           );
         }
 }
