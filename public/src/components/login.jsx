@@ -24,8 +24,8 @@ class SketchLogin extends React.Component {
         super(props, context);
 
         this.state = {
-            username: "",
-            password: ""
+            username: '',
+            password: ''
         };
 
         this.handleInformation = this.handleInformation.bind(this);
@@ -42,20 +42,19 @@ class SketchLogin extends React.Component {
 
     handleClick(event) {
         var payload = {
-            "username" : this.state.username,
-            "password" : this.state.password
+            'username' : this.state.username,
+            'password' : this.state.password
         }
 
         axios.get('/api/login', payload).then((response) => {
             console.log(response);
             if(response.status == 200) {
-                console.log("Login successful.");
+                console.log('Login successful.');
                 var uploadScreen = [];
                 // uploadScreen.push(<UploadScreen appContext={this.props.appContext}/>)
                 // this.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
             } else {
                 console.log("The username and password don't match, or do not exist.");
-                alert("The username and password don't match, or do not exist.")
             }
         }).catch(function (error) {
             console.log(error);
