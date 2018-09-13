@@ -1,13 +1,36 @@
 var db = require('../models');
 
 module.exports = app => {
-	app.get('/api/login', (req, res) => {
+	app.get('/api/userData', (req, res) => {
 		db['userData'].findAll({}).then(dbUserData => {
 			res.json(dbUserData);
 		});
 	});
 
+	app.get('/api/login/:username/:password', (req, res) => {
+		db['userData'].findOne({
+			where: {
+				username: req['params']['username'],
+				password: req['params']['password']
+			}
+		}).then(dbUserData => {
+			res.json(dbUserData);
+		});
+	});
+
+	app.post('/api/login/:username/:password', (req, res) => {
+		db['userData'].findOne({
+			where: {
+				username: req['params']['username'],
+				password: req['params']['password']
+			}
+		}).then(dbUserData => {
+			res.json(dbUserData);
+		});
+	});
+
 	app.post('/api/userData', (req, res) => {
+		console.log(req['body']);
 		db['userData'].create({
             email: req['body']['email'],
             username: req['body']['username'],

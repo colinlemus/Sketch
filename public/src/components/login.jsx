@@ -30,6 +30,9 @@ class SketchLogin extends React.Component {
         };
 
         this.handleInformation = this.handleInformation.bind(this);
+        this.handleUsernameChangeState = this.handleUsernameChangeState.bind(this);
+        this.handlePasswordChangeState = this.handlePasswordChangeState.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleInformation(event) {
@@ -42,14 +45,14 @@ class SketchLogin extends React.Component {
     }
 
     handleClick(event) {
-        var payload = {
-            'username' : this.state.username,
-            'password' : this.state.password
-        }
+        var username = this['state']['username'];
+        var password = this['state']['password'];
+        var combinedQuery = username + "/" + password;
 
-        axios.get('/api/login', payload).then((response) => {
+        axios.post('/api/login/' + combinedQuery).then((response) => {
+            console.log(combinedQuery);
             console.log(response);
-            if(response.status == 200) {
+            if(response['data'] !== null) {
                 console.log('Login successful.');
                 var uploadScreen = [];
                 // uploadScreen.push(<UploadScreen appContext={this.props.appContext}/>)
@@ -57,8 +60,22 @@ class SketchLogin extends React.Component {
             } else {
                 console.log("The username and password don't match, or do not exist.");
             }
-        }).catch(function (error) {
+        }).catch((error) => {
             console.log(error);
+        });
+        
+        event.preventDefault();
+    }
+
+    handleUsernameChangeState(event) {
+        this.setState({
+            username: event.target.value
+        });
+    }
+
+    handlePasswordChangeState(event) {
+        this.setState({
+            password: event.target.value
         });
     }
 
@@ -70,15 +87,15 @@ class SketchLogin extends React.Component {
                         <div id='login-box' className='card'>
                             <div className='card-header font-weight-bold'>Login</div>
                             <div className='card-body'>
-                                <form onSubmit={this.handleInformation}>
+                                <form onSubmit={this.handleClick}>
                                     <div className='form-group'>
-                                        <input onChange={(event,newValue) => this.setState({username:newValue})} type='text' className='form-control' name='username' placeholder='Username' required='required' />
+                                        <input type='text' className='form-control' name='username' placeholder='Username' required='required' value={this.state.username} onChange={this.handleUsernameChangeState} />
                                     </div>
                                     <div className='form-group'>
-                                        <input onChange={(event,newValue) => this.setState({password:newValue})} type='text' className='form-control' name='password' placeholder='Password' required='required' />
+                                        <input type='text' className='form-control' name='password' placeholder='Password' required='required' value={this.state.password} onChange={this.handlePasswordChangeState} />
                                     </div>
                                     <div className='form-group'>
-                                        <button type='submit' className='btn btn-primary btn-lg btn-block login-btn' style={button} onClick={(event) => this.handleClick(event)}>Login</button>
+                                        <button type='submit' value="Submit" className='btn btn-primary btn-lg btn-block login-btn' style={button}>Login</button>
                                     </div>
                                     <div className='row'>
                                         <div className='col-6' style={signUp}>

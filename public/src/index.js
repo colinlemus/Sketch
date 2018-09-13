@@ -20,7 +20,7 @@ class App extends React.Component {
             <Route exact path='/draw' component={CanvasDraw} />
             <Route exact path='/game-chat' component={GameChat} />
             <Route exact path='/sign-up' component={SignUp} />
-            <Route path='/api' />
+            <Route path='/api/' />
             <Route path='*' component={Handle404} />
           </Switch>
         </div>

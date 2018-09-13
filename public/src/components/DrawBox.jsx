@@ -5,7 +5,11 @@ import Canvas from './BoxComponent'
 
 class SketchCanvas extends React.Component {
     render() {
-        return (<div><Canvas draw={drawCanvas} width={400} height={400} realtime/></div>);
+        return (
+        <div>
+            <Canvas draw={drawCanvas} width={400} height={400} realtime/>
+        </div>
+        );
     }
 }
  
