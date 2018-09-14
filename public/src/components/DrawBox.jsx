@@ -1,25 +1,24 @@
 import React from 'react';
-import '../pages/css/SketchLogin.css';
+import CanvasDraw from './CanvasComponent';
 import '../pages/css/utilities.css';
-import Canvas from './BoxComponent'
 
-class SketchCanvas extends React.Component {
+const centerCanvas = {
+    height: '100vh',
+    alignItems: 'center',
+    justifyContent: 'middle',
+    display: 'flex'
+}
+
+export default class drawArea extends React.Component {
     render() {
         return (
-        <div>
-            <Canvas draw={drawCanvas} width={400} height={400} realtime/>
+        <div className='row' style={centerCanvas}>
+            <div className='col-12'>
+                <div>
+                    <div className='text-center'><CanvasDraw /></div>
+                </div>
+            </div>
         </div>
-        );
+        )
     }
 }
- 
-function drawCanvas({ctx, time}) {
-    const {width, height} = ctx.canvas
-    ctx.save()
-    ctx.clearRect(0, 0, width, height)
-    ctx.fillStyle = 'pink'
-    ctx.translate(width / 2, height / 2)
-    ctx.fillRect(-1 * width / 4, -1 * height / 4, width / 2, height / 2)
-    ctx.restore()
-}
-export default SketchCanvas;
