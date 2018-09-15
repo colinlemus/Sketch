@@ -4,10 +4,18 @@ import SketchCanvas from './DrawBox.jsx';
 import '../pages/css/utilities.css';
 
 const centerCanvas = {
-    height: '90vh',
+    //height: '90vh',
+    margin:'15vh 0vw -1vh 0vw',
     alignItems: 'center',
     justifyContent: 'middle',
     display: 'flex'
+}
+const centerButtons = {
+    textAlign:'center',
+    position:'relative',
+    display:'flex',
+    float:'right',
+    border:'1px solid black'
 }
 const buttons = {
     top: "72.5vh",
@@ -32,7 +40,7 @@ export default class CanvasDraw extends React.Component {
     static defaultProps = {
         loadTimeOffset: 5,
         brushSize: 6,
-        canvasWidth: 500,
+        canvasWidth: 600,
         canvasHeight: 500,
         disabled: false
     };
@@ -51,6 +59,14 @@ export default class CanvasDraw extends React.Component {
         this.handleColorGrey = this.handleColorGrey.bind(this);
         this.handleColorRed = this.handleColorRed.bind(this);
         this.handleColorYellow = this.handleColorYellow.bind(this);
+        this.handleColorOrange = this.handleColorOrange.bind(this);
+        this.handleColorWhite = this.handleColorWhite.bind(this);
+        this.handleColorGreen = this.handleColorGreen.bind(this);
+        this.handleColorLBlue = this.handleColorLBlue.bind(this);
+        this.handleColorBlue = this.handleColorBlue.bind(this);
+        this.handleColorPink = this.handleColorPink.bind(this);
+        this.handleColorPurple = this.handleColorPurple.bind(this);
+
 
     
     }
@@ -71,21 +87,63 @@ export default class CanvasDraw extends React.Component {
     }
     handleColorYellow(event) {
         this.setState({
-            brushColor: event.target.value="#FFC300"
+            brushColor: event.target.value="#FFFE00  "
         });
         console.log(event.target.value);
         event.preventDefault();
     }
-    handleColorChange(event) {
+    handleColorOrange(event) {
         this.setState({
-            brushColor: event.target.value="#d3d3d3"
+            brushColor: event.target.value="#FF8F00"
         });
         console.log(event.target.value);
         event.preventDefault();
     }
-    handleColorChange(event) {
+    handleColorWhite(event) {
         this.setState({
-            brushColor: event.target.value="#d3d3d3"
+            brushColor: event.target.value="#FFFFFF"
+        });
+        console.log(event.target.value);
+        event.preventDefault();
+    }
+    handleColorGreen(event) {
+        this.setState({
+            brushColor: event.target.value="#00FF25"
+        });
+        console.log(event.target.value);
+        event.preventDefault();
+    }
+    handleColorWhite(event) {
+        this.setState({
+            brushColor: event.target.value="#FFFFFF"
+        });
+        console.log(event.target.value);
+        event.preventDefault();
+    }
+    handleColorLBlue(event) {
+        this.setState({
+            brushColor: event.target.value="#26FDFF"
+        });
+        console.log(event.target.value);
+        event.preventDefault();
+    }
+    handleColorBlue(event) {
+        this.setState({
+            brushColor: event.target.value="#2639FF"
+        });
+        console.log(event.target.value);
+        event.preventDefault();
+    }
+    handleColorPink(event) {
+        this.setState({
+            brushColor: event.target.value="#CF65F0"
+        });
+        console.log(event.target.value);
+        event.preventDefault();
+    }
+    handleColorPurple(event) {
+        this.setState({
+            brushColor: event.target.value="#F8C2E7"
         });
         console.log(event.target.value);
         event.preventDefault();
@@ -274,45 +332,54 @@ export default class CanvasDraw extends React.Component {
         
         render() {
           return (
-            <div className='row' style={centerCanvas}>
-                <div className='col-12'>
-                    <div>
-                        <div style={buttons}>
-                            <div onClick={this.handleColorGrey} value={this.brushColor}><img src="http://poppin.imgix.net/products/swatch/swatch_light_gray.jpg?w=50&h=50"></img></div>
-                            <div onClick={this.handleColorRed} value={this.brushColor}><img style={pics}src="https://images-na.ssl-images-amazon.com/images/I/41d-kZxsuIL._SY450_.jpg"></img></div>
-                            <div onClick={this.handleColorYellow} value={this.brushColor}><img style={pics}src="http://sohme.com/wp-content/uploads/2015/07/yellow.png"></img></div>
+                    <div> 
+                    <div className='row' style={centerCanvas}>
+                        <div className='col-12'>
+                            <div className='text-center'>            
+                                <canvas
+                                    width={this.props.canvasWidth}
+                                    height={this.props.canvasHeight}
+                                    style={{
+                                        background: '#fff',
+                                        touchAction: 'none',
+                                        ...this.props.style
+                                    }}
+                                    ref={canvas => {
+                                        if (canvas) {
+                                        this.canvas = canvas;
+                                        this.ctx = canvas.getContext('2d');
+                                        }
+                                    }}
+                                    onMouseDown={this.drawStart}
+                                    onClick={() => false}
+                                    onMouseUp={this.drawEnd}
+                                    onMouseOut={this.drawEnd}
+                                    onMouseMove={this.draw}
+                                    onTouchStart={this.drawStart}
+                                    onTouchMove={this.draw}
+                                    onTouchEnd={this.drawEnd}
+                                    onTouchCancel={this.drawEnd}
+                                />
+                            </div>
                         </div>
-                     
-                      
-                        <div className='text-center'>            
-                            <canvas
-                                width={this.props.canvasWidth}
-                                height={this.props.canvasHeight}
-                                style={{
-                                    background: '#fff',
-                                    touchAction: 'none',
-                                    ...this.props.style
-                                }}
-                                ref={canvas => {
-                                    if (canvas) {
-                                    this.canvas = canvas;
-                                    this.ctx = canvas.getContext('2d');
-                                    }
-                                }}
-                                onMouseDown={this.drawStart}
-                                onClick={() => false}
-                                onMouseUp={this.drawEnd}
-                                onMouseOut={this.drawEnd}
-                                onMouseMove={this.draw}
-                                onTouchStart={this.drawStart}
-                                onTouchMove={this.draw}
-                                onTouchEnd={this.drawEnd}
-                                onTouchCancel={this.drawEnd}
-                            />
+                    </div>
+                    <div className="row">
+                            <div className="col-8">
+                                <div style={centerButtons}>
+                                <div onClick={this.handleColorWhite} value={this.brushColor}><img style={pics}src="http://www.airsciences.org.uk/geometry/obj933geo851shd124pg17p170.png"></img></div>
+                                <div onClick={this.handleColorGrey} value={this.brushColor}><img src="http://poppin.imgix.net/products/swatch/swatch_light_gray.jpg?w=50&h=50"></img></div>
+                                <div onClick={this.handleColorRed} value={this.brushColor}><img style={pics}src="https://images-na.ssl-images-amazon.com/images/I/41d-kZxsuIL._SY450_.jpg"></img></div>
+                                <div onClick={this.handleColorOrange} value={this.brushColor}><img style={pics}src="http://jdrquest.com/wp-content/uploads/2014/12/orange-box.jpg"></img></div>
+                                <div onClick={this.handleColorYellow} value={this.brushColor}><img style={pics}src="http://sohme.com/wp-content/uploads/2015/07/yellow.png"></img></div>
+                                <div onClick={this.handleColorGreen} value={this.brushColor}><img style={pics}src="https://thumbs.dreamstime.com/t/ink-watercolor-paint-splatter-transition-chroma-key-green-screen-background-effect-96651302.jpg"></img></div>
+                                <div onClick={this.handleColorLBlue} value={this.brushColor}><img style={pics}src="http://na.lvlt.sims3store.cdn.ea.com/u/f/sims/sims3/sims3store/mygoodies/avatarbackgrounds_free_solidlightblue/Thumbnail_300x300.png"></img></div>
+                                <div onClick={this.handleColorBlue} value={this.brushColor}><img style={pics}src="http://backgroundcheckall.com/wp-content/uploads/2017/12/blue-background-plain-4.jpg"></img></div>
+                                <div onClick={this.handleColorPink} value={this.brushColor}><img style={pics}src="http://getwallpapers.com/wallpaper/full/d/d/1/160938.jpg"></img></div>
+                                <div onClick={this.handleColorPurple} value={this.brushColor}><img style={pics}src="https://wallpapercave.com/wp/MuIV2JN.jpg"></img></div>
+                            </div>                        
                         </div>
                     </div>
                 </div>
-            </div>
-          );
+            );
+            }
         }
-}
