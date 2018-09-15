@@ -12,8 +12,19 @@ const justifyCenter = {
 const button = {
     backgroundColor: '#60c7c1',
     border: 'none',
-    top: '25%',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    whiteSpace: 'normal'
+}
+
+const loginButton = {
+    position: "relative",
+    top: "2vh",
+    marginBottom: "4vh"
+}
+
+const updateButton = {
+    position: "relative",
+    top: "1vh"
 }
 
 class SketchForgotPassword extends React.Component {
@@ -83,13 +94,17 @@ class SketchForgotPassword extends React.Component {
                                         <div className='form-group'>
                                             <input type='password' className='form-control' name='newPassword' placeholder='New Password' required='required' value={this['state']['newPassword']} onChange={this['handlePasswordChangeState']} />
                                         </div>
-                                        <div className='form-group'>
-                                            <button type='submit' value="Submit" className='btn btn-primary btn-lg btn-block login-btn' style={button}>Update Password!</button>
+                                        <div className='row'>
+                                            <div className='col-md-6' style={loginButton}>
+                                                <Link to='/'>Back to Login!</Link>
+                                            </div>
+                                            <div className='col-md-6' style={updateButton}>
+                                                <div className='form-group'>
+                                                    <button type='submit' value="Submit" className='btn btn-primary btn-lg btn-block login-btn' style={button}>Update Password!</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </form>
-                                    <div>
-                                        <Link to="/">Back to Login!</Link>
-                                    </div>
                                 </div>
                             </div>
                         </div>

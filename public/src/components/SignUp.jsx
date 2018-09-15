@@ -12,8 +12,18 @@ const justifyCenter = {
 const button = {
     backgroundColor: '#60c7c1',
     border: 'none',
-    top: '25%',
     textDecoration: 'none'
+}
+
+const loginButton = {
+    position: "relative",
+    top: "2vh",
+    marginBottom: "4vh"
+}
+
+const signUpButton = {
+    position: "relative",
+    top: "1vh"
 }
 
 const textField = {
@@ -131,13 +141,19 @@ class SignUp extends React.Component {
                                         <div className='form-group'>
                                             <input onChange={this.handlePasswordChangeState} value={this.state.password} type='text' className='form-control' name='password' placeholder='Password' required='required' />
                                         </div>
-                                        <div className='form-group'>
-                                            <button type='submit' className='btn btn-primary btn-lg btn-block login-btn' style={button} onClick={(event) => this.handleClick(event)}>Sign Up!</button>
+                                        <div className='row'>
+                                            <div className='col-md-6' style={loginButton}>
+                                                <div>
+                                                    <Link to="/">Back to Login!</Link>
+                                                </div>
+                                            </div>
+                                            <div className='col-md-6' style={signUpButton}>
+                                                <div className='form-group'>
+                                                    <button type='submit' className='btn btn-primary btn-lg btn-block login-btn' style={button} onClick={(event) => this.handleClick(event)}>Sign Up!</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </form>
-                                    <div>
-                                        <Link to="/">Back to Login!</Link>
-                                    </div>
                                 </div>
                             </div>
                         </div>
