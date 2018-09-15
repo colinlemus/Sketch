@@ -11,6 +11,8 @@ var db = require("./models");
 >>>>>>> Stashed changes
 var path = require('path');
 var app = express();
+var WSReadyStates = require('./constants/ws-ready-states');
+var expressWs = require('express-ws')(app); // Websocket
 var PORT = process.env.PORT || 8080;
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -26,6 +28,24 @@ require('./routes/html-routes')(app);
 
 var syncOptions = { force: false };
 
+
+
+// Websocket
+app.ws('/game-chat', function(ws, req) {
+	ws.on('message', function(msg) {
+	  console.log("backend msg: ", msg);
+
+	  expressWs.getWss().clients.forEach(function(client) {
+
+		if (client !== ws && client.readyState === WSReadyStates.OPEN) {
+			client.send(msg);
+		}
+	  })
+	});
+	console.log('socket', req.testing);
+});
+
+
 db.sequelize.sync().then(function() {
 	app.listen(PORT, function() {
 		console.log(
@@ -35,5 +55,7 @@ db.sequelize.sync().then(function() {
 		);
 	});
 });
+
+
 
 module.exports = app;
