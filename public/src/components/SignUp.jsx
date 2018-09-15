@@ -1,5 +1,5 @@
 import React from 'react';
-import SketchLogo from './sketchlogo.jsx';
+import SketchLogo from './SketchLogo';
 import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom'
 import '../pages/css/SignUp.css';
