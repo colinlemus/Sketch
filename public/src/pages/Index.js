@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SketchLogin from '../components/Login';
-import SketchLogo from '../components/sketchlogo.jsx';
+import SketchLogo from '../components/SketchLogo';
 import '../pages/css/utilities.css';
 
 export default class Index extends Component {

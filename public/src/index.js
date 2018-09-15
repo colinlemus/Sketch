@@ -9,7 +9,7 @@ import GameChat from './components/ChatComponent';
 import GameLobby from './components/GameLobby';
 import SignUp from './components/SignUp';
 import ForgotPassword from './components/ForgotPassword';
-import SketchLogo from './components/sketchlogo.jsx';
+import SketchLogo from './components/SketchLogo';
 import './pages/css/utilities.css';
 
 class App extends React.Component { 
