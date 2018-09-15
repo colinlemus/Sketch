@@ -2,7 +2,7 @@ import React from 'react';
 import '../pages/css/SketchForgotPassword.css';
 import '../pages/css/utilities.css';
 import { Link } from 'react-router-dom'
-import SketchLogo from './SketchLogo';
+import SketchLogo from './sketchlogo.jsx';
 import axios from 'axios';
 
 const justifyCenter = {

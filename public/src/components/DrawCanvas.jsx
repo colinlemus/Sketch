@@ -1,12 +1,28 @@
 import React from 'react';
+import SketchCanvas from './DrawBox.jsx';
+
 import '../pages/css/utilities.css';
 
 const centerCanvas = {
-    height: '100vh',
+    height: '90vh',
     alignItems: 'center',
     justifyContent: 'middle',
     display: 'flex'
 }
+const buttons = {
+    top: "82.5vh",
+    left:"33.7vw",
+    display: "flex",
+    allignItems: 'center',
+    position: "relative",
+}
+
+const curser = {
+    curser: "pointer",
+    border: "1px solid black"
+
+}
+
 
 export default class CanvasDraw extends React.Component {
     static defaultProps = {
@@ -16,7 +32,7 @@ export default class CanvasDraw extends React.Component {
         canvasHeight: 500,
         disabled: false
     };
-      
+    
     constructor(props) {
       super(props);
           
@@ -28,14 +44,46 @@ export default class CanvasDraw extends React.Component {
         this.linesArray = [];
         this.startDrawIdx = [];
         this.timeoutValidity = 0;
-        this.handleColorChange = this.handleColorChange.bind(this);
+        this.handleColorGrey = this.handleColorGrey.bind(this);
+        this.handleColorRed = this.handleColorRed.bind(this);
+        this.handleColorYellow = this.handleColorYellow.bind(this);
+
+    
     }
 
+    handleColorGrey(event) {
+        this.setState({
+            brushColor: event.target.value="#d3d3d3"
+        });
+        console.log(event.target.value);
+        event.preventDefault();
+    }
+    handleColorRed(event) {
+        this.setState({
+            brushColor: event.target.value="#FF0000"
+        });
+        console.log(event.target.value);
+        event.preventDefault();
+    }
+    handleColorYellow(event) {
+        this.setState({
+            brushColor: event.target.value="#FFC300"
+        });
+        console.log(event.target.value);
+        event.preventDefault();
+    }
     handleColorChange(event) {
         this.setState({
-            brushColor: event.target.value
+            brushColor: event.target.value="#d3d3d3"
         });
-
+        console.log(event.target.value);
+        event.preventDefault();
+    }
+    handleColorChange(event) {
+        this.setState({
+            brushColor: event.target.value="#d3d3d3"
+        });
+        console.log(event.target.value);
         event.preventDefault();
     }
       
@@ -219,13 +267,18 @@ export default class CanvasDraw extends React.Component {
           this.x = newX;
           this.y = newY;
         };
-      
+        
         render() {
           return (
             <div className='row' style={centerCanvas}>
                 <div className='col-12'>
                     <div>
-                        <input onChange={this.handleColorChange} value={this.brushColor} />
+                        <div onClick={this.handleColorGrey} value={this.brushColor}><SketchCanvas /></div>
+                        <div onClick={this.handleColorRed} value={this.brushColor}><SketchCanvas /></div>
+                        <div onClick={this.handleColorYellow} value={this.brushColor}><SketchCanvas /></div>
+
+                     
+                      
                         <div className='text-center'>            
                             <canvas
                                 width={this.props.canvasWidth}
