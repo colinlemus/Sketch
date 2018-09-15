@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
-var colorRed = '#FF0000'
 export default class extends Component {
+
   static defaultProps = {
     loadTimeOffset: 5,
     brushSize: 6,
-    brushColor: colorRed,
+    brushColor: '#FF0000',
     canvasWidth: 500,
     canvasHeight: 500,
     disabled: false
   };
+  colorChange = (brushColor) => {
+    this.setState({brushColor}) 
+  };
+  doStuff = () => {
+    console.log("hi");
+  }
 
   constructor(props) {
     super(props);
-
+    this.state = {
+    brushSize: '',
+    brushColor: ''
+    }
     this.isMouseDown = false;
     this.linesArray = [];
     this.startDrawIdx = [];

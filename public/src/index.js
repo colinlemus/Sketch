@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import CanvasDraw from './components/DrawCanvas';
 import GameChat from './components/ChatComponent';
 import SignUp from './components/SignUp';
-import SketchLogo from './components/SketchLogo';
+import SketchLogo from './components/sketchlogo.jsx';
 import './pages/css/utilities.css';
 
 class App extends React.Component { 

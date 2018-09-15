@@ -1,5 +1,5 @@
 import React from 'react';
-import SketchLogo from './SketchLogo';
+import SketchLogo from './sketchlogo.jsx';
 import axios from 'axios';
 import '../pages/css/SignUp.css';
 import '../pages/css/utilities.css';
