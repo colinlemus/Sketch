@@ -21,6 +21,8 @@ var syncOptions = { force: false };
 
 // Websocket
 app.ws('/game-chat', function(ws, req) {
+	// console.log("ws",ws);
+	// debugger;
 	ws.on('message', function(msg) {
 	  console.log("backend msg: ", msg);
 
@@ -31,7 +33,6 @@ app.ws('/game-chat', function(ws, req) {
 		}
 	  })
 	});
-	console.log('socket', req.testing);
 });
 
 
