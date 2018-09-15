@@ -139,7 +139,7 @@ class SignUp extends React.Component {
                                             <input onChange={this.handleUsernameChangeState} value={this.state.username} type='text' className='form-control' name='username' placeholder='Username' required='required' />
                                         </div>
                                         <div className='form-group'>
-                                            <input onChange={this.handlePasswordChangeState} value={this.state.password} type='text' className='form-control' name='password' placeholder='Password' required='required' />
+                                            <input onChange={this.handlePasswordChangeState} value={this.state.password} type='password' className='form-control' name='password' placeholder='Password' required='required' />
                                         </div>
                                         <div className='row'>
                                             <div className='col-md-6' style={loginButton}>
