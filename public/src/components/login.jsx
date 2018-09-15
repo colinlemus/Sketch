@@ -2,7 +2,7 @@ import React from 'react';
 import '../pages/css/SketchLogin.css';
 import '../pages/css/utilities.css';
 import UserProfile from './UserProfile';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import axios from 'axios';
 
 const justifyCenter = {
@@ -52,15 +52,8 @@ class SketchLogin extends React.Component {
                 UserProfile.setEmail(response['data']['email']);
                 UserProfile.setFirstName(response['data']['firstName']);
                 UserProfile.setLastName(response['data']['lastName']);
-                console.log(UserProfile.getUsername());
-                console.log(UserProfile.getPassword());
-                console.log(UserProfile.getEmail());
-                console.log(UserProfile.getFirstName());
-                console.log(UserProfile.getLastName());
-                var uploadScreen = [];
-                //uploadScreen.push(<UploadScreen appContext={this.props.appContext}/>);
-                //this.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen});
-            } else {
+                this.props.history.push('/game-lobby');
+        } else {
                 console.log("The username and password don't match, or do not exist.");
             }
         }).catch((error) => {
@@ -118,4 +111,4 @@ class SketchLogin extends React.Component {
     }
 }
   
-export default SketchLogin;
+export default withRouter(SketchLogin);
