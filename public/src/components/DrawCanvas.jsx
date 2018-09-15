@@ -10,7 +10,7 @@ const centerCanvas = {
     display: 'flex'
 }
 const buttons = {
-    top: "82.5vh",
+    top: "72.5vh",
     left:"33.7vw",
     display: "flex",
     allignItems: 'center',
@@ -21,6 +21,10 @@ const curser = {
     curser: "pointer",
     border: "1px solid black"
 
+}
+const pics = {
+    height: "50px",
+    width: "50px"
 }
 
 
@@ -273,10 +277,11 @@ export default class CanvasDraw extends React.Component {
             <div className='row' style={centerCanvas}>
                 <div className='col-12'>
                     <div>
-                        <div onClick={this.handleColorGrey} value={this.brushColor}><SketchCanvas /></div>
-                        <div onClick={this.handleColorRed} value={this.brushColor}><SketchCanvas /></div>
-                        <div onClick={this.handleColorYellow} value={this.brushColor}><SketchCanvas /></div>
-
+                        <div style={buttons}>
+                            <div onClick={this.handleColorGrey} value={this.brushColor}><img src="http://poppin.imgix.net/products/swatch/swatch_light_gray.jpg?w=50&h=50"></img></div>
+                            <div onClick={this.handleColorRed} value={this.brushColor}><img style={pics}src="https://images-na.ssl-images-amazon.com/images/I/41d-kZxsuIL._SY450_.jpg"></img></div>
+                            <div onClick={this.handleColorYellow} value={this.brushColor}><img style={pics}src="http://sohme.com/wp-content/uploads/2015/07/yellow.png"></img></div>
+                        </div>
                      
                       
                         <div className='text-center'>            
