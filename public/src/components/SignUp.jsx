@@ -1,8 +1,13 @@
 import React from 'react';
 import SketchLogo from './SketchLogo';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 import '../pages/css/SignUp.css';
 import '../pages/css/utilities.css';
+
+const justifyCenter = {
+    justifyContent: 'center'
+}
 
 const button = {
     backgroundColor: '#60c7c1',
@@ -100,35 +105,40 @@ class SignUp extends React.Component {
                 <SketchLogo />
                 <div className='row'>
                     <div className='col-12'>
-                        <div id="sign-up-box" className='card'>
-                            <div className='card-header font-weight-bold text-center'>Sign Up</div>
-                            <div className='card-body'>
-                                <form onSubmit={this.handleInformation}>
-                                    <div className='row'>
-                                        <div className='col-6' style={textField}>
-                                            <div className='form-group'>
-                                                <input onChange={this.handleFirstNameChangeState} value={this.state.firstName} type='text' className='form-control' name='firstName' placeholder='First Name' required='required' />
+                        <div className='text-center vertical-center' style={justifyCenter}>
+                            <div id="sign-up-box" className='card'>
+                                <div className='card-header font-weight-bold text-center'>Sign Up</div>
+                                <div className='card-body'>
+                                    <form onSubmit={this.handleInformation}>
+                                        <div className='row'>
+                                            <div className='col-6' style={textField}>
+                                                <div className='form-group'>
+                                                    <input onChange={this.handleFirstNameChangeState} value={this.state.firstName} type='text' className='form-control' name='firstName' placeholder='First Name' required='required' />
+                                                </div>
+                                            </div>
+                                            <div className='col-6' style={textField}>
+                                                <div className='form-group'>
+                                                    <input onChange={this.handleLastNameChangeState} value={this.state.lastName} type='text' className='form-control' name='lastName' placeholder='Last Name' required='required' />
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className='col-6' style={textField}>
-                                            <div className='form-group'>
-                                                <input onChange={this.handleLastNameChangeState} value={this.state.lastName} type='text' className='form-control' name='lastName' placeholder='Last Name' required='required' />
-                                            </div>
+                                        <div className='form-group'>
+                                            <input onChange={this.handleEmailChangeState} value={this.state.email} type='text' className='form-control' name='email' placeholder='Email' required='required' />
                                         </div>
+                                        <div className='form-group'>
+                                            <input onChange={this.handleUsernameChangeState} value={this.state.username} type='text' className='form-control' name='username' placeholder='Username' required='required' />
+                                        </div>
+                                        <div className='form-group'>
+                                            <input onChange={this.handlePasswordChangeState} value={this.state.password} type='text' className='form-control' name='password' placeholder='Password' required='required' />
+                                        </div>
+                                        <div className='form-group'>
+                                            <button type='submit' className='btn btn-primary btn-lg btn-block login-btn' style={button} onClick={(event) => this.handleClick(event)}>Sign Up!</button>
+                                        </div>
+                                    </form>
+                                    <div>
+                                        <Link to="/">Back to Login!</Link>
                                     </div>
-                                    <div className='form-group'>
-                                        <input onChange={this.handleEmailChangeState} value={this.state.email} type='text' className='form-control' name='email' placeholder='Email' required='required' />
-                                    </div>
-                                    <div className='form-group'>
-                                        <input onChange={this.handleUsernameChangeState} value={this.state.username} type='text' className='form-control' name='username' placeholder='Username' required='required' />
-                                    </div>
-                                    <div className='form-group'>
-                                        <input onChange={this.handlePasswordChangeState} value={this.state.password} type='text' className='form-control' name='password' placeholder='Password' required='required' />
-                                    </div>
-                                    <div className='form-group'>
-                                        <button type='submit' className='btn btn-primary btn-lg btn-block login-btn' style={button} onClick={(event) => this.handleClick(event)}>Sign Up!</button>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>

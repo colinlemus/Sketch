@@ -43,6 +43,16 @@ module.exports = app => {
 		});
 	});
 
+	app.post('/api/forget/', (req, res) => {
+		db['userData'].findOne({
+			where: {
+				username: req['body']['username']
+			}
+		}).then(dbUserData => {
+			res.json(dbUserData);
+		});
+	});
+
 	app.put('/api/forget/', (req, res) => {
 		db['userData'].update(req['body'], {
 			where: {

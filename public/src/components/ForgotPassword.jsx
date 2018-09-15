@@ -2,8 +2,12 @@ import React from 'react';
 import '../pages/css/SketchForgotPassword.css';
 import '../pages/css/utilities.css';
 import { Link } from 'react-router-dom'
-import SketchLogo from '../components/SketchLogo';
+import SketchLogo from './SketchLogo';
 import axios from 'axios';
+
+const justifyCenter = {
+    justifyContent: 'center'
+}
 
 const button = {
     backgroundColor: '#60c7c1',
@@ -21,33 +25,32 @@ class SketchForgotPassword extends React.Component {
             newPassword: '',
         };
 
-        this['handleInformation'] = this['handleInformation'].bind(this);
         this['handleUsernameChangeState'] = this['handleUsernameChangeState'].bind(this);
         this['handlePasswordChangeState'] = this['handlePasswordChangeState'].bind(this);
         this['handleClick'] = this['handleClick'].bind(this);
     }
 
-    handleInformation(event) {
-        this.setState({
-            username: this['state']['username'],
-            newPassword: this['state']['newPassword']
-        });
-
-        event.preventDefault();
-    }
-
     handleClick(event) {
         var username = this['state']['username'];
         var newPassword = this['state']['newPassword'];
-        var combinedQuery = username + "/" + newPassword;
 
-        axios.post('/api/forget/' + combinedQuery).then((response) => {
-            console.log(combinedQuery);
+        axios.post("/api/forget/", {
+            username,
+        }).then((response) => {
             console.log(response);
-        }).catch((error) => {
-            console.log(error);
+            axios.put('/api/forget/', {
+                id: response['data']['id'],
+                firstName: response['data']['firstName'],
+                lastName: response['data']['lastname'],
+                email: response['data']['email'],
+                username: username,
+                password: newPassword
+            }).then((response) => {
+                console.log(response);
+            }).catch((error) => {
+                console.log(error);
+            });
         });
-        
         event.preventDefault();
     }
 
@@ -69,7 +72,7 @@ class SketchForgotPassword extends React.Component {
                 <SketchLogo />
                 <div className='row'>
                     <div className='col-12'>
-                        <div className='text-center vertical-center'>              
+                        <div className='text-center vertical-center' style={justifyCenter}>              
                             <div id='login-box' className='card'>
                                 <div className='card-header font-weight-bold'>Forgot Password</div>
                                 <div className='card-body'>
@@ -78,12 +81,15 @@ class SketchForgotPassword extends React.Component {
                                             <input type='text' className='form-control' name='username' placeholder='Username' required='required' value={this['state']['username']} onChange={this['handleUsernameChangeState']} />
                                         </div>
                                         <div className='form-group'>
-                                            <input type='text' className='form-control' name='newPassword' placeholder='Password' required='required' value={this['state']['newPassword']} onChange={this['handlePasswordChangeState']} />
+                                            <input type='password' className='form-control' name='newPassword' placeholder='New Password' required='required' value={this['state']['newPassword']} onChange={this['handlePasswordChangeState']} />
                                         </div>
                                         <div className='form-group'>
                                             <button type='submit' value="Submit" className='btn btn-primary btn-lg btn-block login-btn' style={button}>Update Password!</button>
                                         </div>
                                     </form>
+                                    <div>
+                                        <Link to="/">Back to Login!</Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -1,8 +1,13 @@
 import React from 'react';
 import '../pages/css/SketchLogin.css';
 import '../pages/css/utilities.css';
+import UserProfile from './UserProfile';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+
+const justifyCenter = {
+    justifyContent: 'center'
+}
 
 const button = {
     backgroundColor: '#60c7c1',
@@ -22,25 +27,14 @@ const forgotPassword = {
 class SketchLogin extends React.Component {
     constructor(props, context) {
         super(props, context);
-
         this['state'] = {
             username: '',
             password: ''
-        };
+        }
 
-        this['handleInformation'] = this['handleInformation'].bind(this);
         this['handleUsernameChangeState'] = this['handleUsernameChangeState'].bind(this);
         this['handlePasswordChangeState'] = this['handlePasswordChangeState'].bind(this);
         this['handleClick'] = this['handleClick'].bind(this);
-    }
-
-    handleInformation(event) {
-        this.setState({
-            username: this['state']['username'],
-            password: this['state']['password']
-        });
-
-        event.preventDefault();
     }
 
     handleClick(event) {
@@ -54,6 +48,16 @@ class SketchLogin extends React.Component {
             console.log(response);
             if(response['data'] !== null) {
                 console.log('Login successful.');
+                UserProfile.setUsername(response['data']['username']);
+                UserProfile.setPassword(response['data']['password']);
+                UserProfile.setEmail(response['data']['email']);
+                UserProfile.setFirstName(response['data']['firstName']);
+                UserProfile.setLastName(response['data']['lastName']);
+                console.log(UserProfile.getUsername());
+                console.log(UserProfile.getPassword());
+                console.log(UserProfile.getEmail());
+                console.log(UserProfile.getFirstName());
+                console.log(UserProfile.getLastName());
                 var uploadScreen = [];
                 //uploadScreen.push(<UploadScreen appContext={this.props.appContext}/>);
                 //this.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen});
@@ -76,14 +80,14 @@ class SketchLogin extends React.Component {
     handlePasswordChangeState(event) {
         this.setState({
             password: event['target']['value']
-        });
+        });    
     }
 
     render() {
         return (
             <div className='row'>
                 <div className='col-12'>
-                    <div className='text-center vertical-center'>              
+                    <div className='text-center vertical-center' style={justifyCenter}>              
                         <div id='login-box' className='card'>
                             <div className='card-header font-weight-bold'>Login</div>
                             <div className='card-body'>
@@ -92,7 +96,7 @@ class SketchLogin extends React.Component {
                                         <input type='text' className='form-control' name='username' placeholder='Username' required='required' value={this['state']['username']} onChange={this['handleUsernameChangeState']} />
                                     </div>
                                     <div className='form-group'>
-                                        <input type='text' className='form-control' name='password' placeholder='Password' required='required' value={this['state']['password']} onChange={this['handlePasswordChangeState']} />
+                                        <input type='password' className='form-control' name='password' placeholder='Password' required='required' value={this['state']['password']} onChange={this['handlePasswordChangeState']} />
                                     </div>
                                     <div className='form-group'>
                                         <button type='submit' value="Submit" className='btn btn-primary btn-lg btn-block login-btn' style={button}>Login</button>
