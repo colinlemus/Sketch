@@ -3,11 +3,7 @@ import SketchLogin from '../components/Login';
 import SketchLogo from '../components/SketchLogo';
 import '../pages/css/utilities.css';
 
-<<<<<<< Updated upstream
 export default class Index extends Component {
-=======
-class Index extends Component {
->>>>>>> Stashed changes
 	constructor() {
 		super();
 	}
