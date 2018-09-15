@@ -6,6 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import CanvasDraw from './components/DrawCanvas';
 import GameChat from './components/ChatComponent';
+import GameLobby from './components/GameLobby';
 import SignUp from './components/SignUp';
 import ForgotPassword from './components/ForgotPassword';
 import SketchLogo from './components/SketchLogo';
@@ -22,6 +23,7 @@ class App extends React.Component {
             <Route exact path='/game-chat' component={GameChat} />
             <Route exact path='/sign-up' component={SignUp} />
             <Route exact path='/forgot-password' component={ForgotPassword} />
+            <Route exact path='/game-lobby' component={GameLobby} />
             <Route path='/api/' />
             <Route path='*' component={Handle404} />
           </Switch>
