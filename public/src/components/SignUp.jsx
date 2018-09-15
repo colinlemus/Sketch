@@ -1,7 +1,7 @@
 import React from 'react';
 import SketchLogo from './SketchLogo';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import '../pages/css/SignUp.css';
 import '../pages/css/utilities.css';
 
@@ -74,6 +74,7 @@ class SignUp extends React.Component {
         console.log(payload);
         axios.post('/api/userData', payload).then((response) => {
             console.log(response);
+            this.props.history.push('/');
         }).catch(function (error) {
             console.log(error);
         });
@@ -139,7 +140,7 @@ class SignUp extends React.Component {
                                             <input onChange={this.handleUsernameChangeState} value={this.state.username} type='text' className='form-control' name='username' placeholder='Username' required='required' />
                                         </div>
                                         <div className='form-group'>
-                                            <input onChange={this.handlePasswordChangeState} value={this.state.password} type='text' className='form-control' name='password' placeholder='Password' required='required' />
+                                            <input onChange={this.handlePasswordChangeState} value={this.state.password} type='password' className='form-control' name='password' placeholder='Password' required='required' />
                                         </div>
                                         <div className='row'>
                                             <div className='col-md-6' style={loginButton}>
@@ -164,4 +165,4 @@ class SignUp extends React.Component {
     }
 }
   
-export default SignUp;
+export default withRouter(SignUp);
