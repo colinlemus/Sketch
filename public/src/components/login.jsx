@@ -12,12 +12,11 @@ const justifyCenter = {
 const button = {
     backgroundColor: '#60c7c1',
     border: 'none',
-    top: '25%',
     textDecoration: 'none'
 }
 
 const signUp = {
-    
+
 }
 
 const forgotPassword = {
