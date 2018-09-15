@@ -9,27 +9,27 @@ var UserProfile = (function () {
 
     function setUsername(username) {
         user['username'] = username;
-        sessionStorage.setItem("username", user['username']);
+        localStorage.setItem("username", user['username']);
     }
 
     function setPassword(password) {
         user['password'] = password;
-        sessionStorage.setItem("password", user['password']);
+        localStorage.setItem("password", user['password']);
     }
 
     function setEmail(email) {
        user['email'] = email;
-       sessionStorage.setItem("email", user['email']);
+       localStorage.setItem("email", user['email']);
     }
 
     function setFirstName(firstName) {
        user['firstName'] = firstName;
-       sessionStorage.setItem("firstName", user['firstName']);
+       localStorage.setItem("firstName", user['firstName']);
     }
 
     function setLastName(lastName) {
        user['lastName'] = lastName;
-       sessionStorage.setItem("lastName", user['lastName']);
+       localStorage.setItem("lastName", user['lastName']);
     }
 
     function getUsername() {
