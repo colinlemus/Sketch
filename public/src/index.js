@@ -7,7 +7,12 @@ import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import CanvasDraw from './components/DrawCanvas';
 import GameChat from './components/ChatComponent';
 import SignUp from './components/SignUp';
+<<<<<<< HEAD
 import SketchLogo from './components/sketchlogo.jsx';
+=======
+import ForgotPassword from './components/ForgotPassword';
+import SketchLogo from './components/SketchLogo';
+>>>>>>> ca84ecced9443573d5970e1cd5f6538aaaf95775
 import './pages/css/utilities.css';
 
 class App extends React.Component { 
@@ -20,7 +25,8 @@ class App extends React.Component {
             <Route exact path='/draw' component={CanvasDraw} />
             <Route exact path='/game-chat' component={GameChat} />
             <Route exact path='/sign-up' component={SignUp} />
-            <Route path='/api' />
+            <Route exact path='/forgot-password' component={ForgotPassword} />
+            <Route path='/api/' />
             <Route path='*' component={Handle404} />
           </Switch>
         </div>

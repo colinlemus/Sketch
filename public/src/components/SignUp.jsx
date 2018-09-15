@@ -1,8 +1,13 @@
 import React from 'react';
 import SketchLogo from './sketchlogo.jsx';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 import '../pages/css/SignUp.css';
 import '../pages/css/utilities.css';
+
+const justifyCenter = {
+    justifyContent: 'center'
+}
 
 const button = {
     backgroundColor: '#60c7c1',
@@ -27,10 +32,15 @@ class SignUp extends React.Component {
             password: ''
         };
 
-        this.postInformation = this.postInformation.bind(this);
+        this.handleInformation = this.handleInformation.bind(this);
+        this.handleFirstNameChangeState = this.handleFirstNameChangeState.bind(this);
+        this.handleLastNameChangeState = this.handleLastNameChangeState.bind(this);
+        this.handleEmailChangeState = this.handleEmailChangeState.bind(this);
+        this.handleUsernameChangeState = this.handleUsernameChangeState.bind(this);
+        this.handlePasswordChangeState = this.handlePasswordChangeState.bind(this);
     }
 
-    postInformation(event) {
+    handleInformation(event) {
         this.setState({
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -44,17 +54,48 @@ class SignUp extends React.Component {
 
     handleClick(event) {
         var payload = {
-            'firstName': this.state.firstName,
-            'lastName': this.state.lastName,
-            'email': this.state.email,
-            'username': this.state.username,
-            'password': this.state.password
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            username: this.state.username,
+            password: this.state.password
         }
 
-        axios.post('/api/login', payload).then((response) => {
+        console.log(payload);
+        axios.post('/api/userData', payload).then((response) => {
             console.log(response);
         }).catch(function (error) {
             console.log(error);
+        });
+    }
+
+    handleFirstNameChangeState(event) {
+        this.setState({
+            firstName: event.target.value
+        });
+    }
+
+    handleLastNameChangeState(event) {
+        this.setState({
+            lastName: event.target.value
+        });
+    }
+
+    handleEmailChangeState(event) {
+        this.setState({
+            email: event.target.value
+        });
+    }
+
+    handleUsernameChangeState(event) {
+        this.setState({
+            username: event.target.value
+        });
+    }
+
+    handlePasswordChangeState(event) {
+        this.setState({
+            password: event.target.value
         });
     }
 
@@ -64,35 +105,40 @@ class SignUp extends React.Component {
                 <SketchLogo />
                 <div className='row'>
                     <div className='col-12'>
-                        <div id="sign-up-box" className='card'>
-                            <div className='card-header font-weight-bold text-center'>Sign Up</div>
-                            <div className='card-body'>
-                                <form onSubmit={this.postInformation}>
-                                    <div className='row'>
-                                        <div className='col-6' style={textField}>
-                                            <div className='form-group'>
-                                                <input onChange={(event,newValue) => this.setState({firstName:newValue})} type='text' className='form-control' name='firstName' placeholder='First Name' required='required' />
+                        <div className='text-center vertical-center' style={justifyCenter}>
+                            <div id="sign-up-box" className='card'>
+                                <div className='card-header font-weight-bold text-center'>Sign Up</div>
+                                <div className='card-body'>
+                                    <form onSubmit={this.handleInformation}>
+                                        <div className='row'>
+                                            <div className='col-6' style={textField}>
+                                                <div className='form-group'>
+                                                    <input onChange={this.handleFirstNameChangeState} value={this.state.firstName} type='text' className='form-control' name='firstName' placeholder='First Name' required='required' />
+                                                </div>
+                                            </div>
+                                            <div className='col-6' style={textField}>
+                                                <div className='form-group'>
+                                                    <input onChange={this.handleLastNameChangeState} value={this.state.lastName} type='text' className='form-control' name='lastName' placeholder='Last Name' required='required' />
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className='col-6' style={textField}>
-                                            <div className='form-group'>
-                                                <input onChange={(event,newValue) => this.setState({lastName:newValue})} type='text' className='form-control' name='lastName' placeholder='Last Name' required='required' />
-                                            </div>
+                                        <div className='form-group'>
+                                            <input onChange={this.handleEmailChangeState} value={this.state.email} type='text' className='form-control' name='email' placeholder='Email' required='required' />
                                         </div>
+                                        <div className='form-group'>
+                                            <input onChange={this.handleUsernameChangeState} value={this.state.username} type='text' className='form-control' name='username' placeholder='Username' required='required' />
+                                        </div>
+                                        <div className='form-group'>
+                                            <input onChange={this.handlePasswordChangeState} value={this.state.password} type='text' className='form-control' name='password' placeholder='Password' required='required' />
+                                        </div>
+                                        <div className='form-group'>
+                                            <button type='submit' className='btn btn-primary btn-lg btn-block login-btn' style={button} onClick={(event) => this.handleClick(event)}>Sign Up!</button>
+                                        </div>
+                                    </form>
+                                    <div>
+                                        <Link to="/">Back to Login!</Link>
                                     </div>
-                                    <div className='form-group'>
-                                        <input onChange={(event,newValue) => this.setState({email:newValue})} type='text' className='form-control' name='email' placeholder='Email' required='required' />
-                                    </div>
-                                    <div className='form-group'>
-                                        <input onChange={(event,newValue) => this.setState({username:newValue})} type='text' className='form-control' name='username' placeholder='Username' required='required' />
-                                    </div>
-                                    <div className='form-group'>
-                                        <input onChange={(event,newValue) => this.setState({password:newValue})} type='text' className='form-control' name='password' placeholder='Password' required='required' />
-                                    </div>
-                                    <div className='form-group'>
-                                        <button type='submit' className='btn btn-primary btn-lg btn-block login-btn' style={button} onClick={(event) => this.handleClick(event)}>Sign Up!</button>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>

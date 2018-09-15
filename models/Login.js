@@ -6,7 +6,6 @@ module.exports = function(sequelize, DataTypes) {
 			validate: {
 				len: [7,255],
 				isEmail: true,
-				notNull: false
 			}
 		},
 		username: {
@@ -14,7 +13,6 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 			validate: {
 				len: [1,10],
-				notNull: false
 			}
 		},
 		password: {
@@ -22,7 +20,6 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 			validate: {
 				len: [6,255],
-				notNull: false
 			}
 		},
 		firstName: {
@@ -30,7 +27,6 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 			validate: {
 				len: [1,255],
-				notNull: false
 			}
 		},
 		lastName: {
@@ -38,7 +34,6 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 			validate: {
 				len: [1,255],
-				notNull: false
 			}
 		}
 	});
