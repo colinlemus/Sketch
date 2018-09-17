@@ -1,6 +1,7 @@
 import React from 'react';
 import '../pages/css/SketchLogo.css';
 import '../pages/css/utilities.css';
+import logo from '../assests/logo.png';
 
 const justifyCenter = {
     justifyContent: 'center'
@@ -12,7 +13,7 @@ class SketchLogo extends React.Component {
             <div className='row'>
                 <div className='col-12'>
                     <div className='vertical-center' style={justifyCenter}>
-                        <img id='sketch-logo' src='https://skribbl.io/res/logo.gif' alt='Logo'></img>
+                        <img id='sketch-logo' src={logo} alt={logo}></img>
                     </div>
                 </div>
             </div>

@@ -2,6 +2,8 @@ import React from 'react';
 import '../pages/css/SketchLogin.css';
 import '../pages/css/utilities.css';
 import UserProfile from './UserProfile';
+import SketchLogo from './SketchLogo';
+import SketchLogin from './Login';
 import { withRouter } from 'react-router-dom'
 
 const justifyCenter = {
@@ -35,35 +37,48 @@ class JoinGame extends React.Component {
         UserProfile.setEmail('');
         UserProfile.setFirstName('');
         UserProfile.setLastName('');
+        UserProfile.setLoggedIn(false);
         this['props']['history'].push('/');
     }
 
     render() {
-        return (
-            <div className='row'>
-                <div className='col-12'>
-                    <div className='text-center vertical-center' style={justifyCenter}>              
-                        <div id='login-box' className='card'>
-                            <div className='card-header font-weight-bold'>
-                                Join a Game!
-                            </div>
-                            <div className='card-body'>
-                                <form onSubmit={this['handleClick']}>
-                                    <div className='form-group'>
-                                        <button type='submit' value="Submit" className='btn btn-primary btn-lg btn-block login-btn' style={button}>Join</button>
+        if(UserProfile.isLoggedIn()) {
+            return (
+                <div className='container'>
+                    <SketchLogo />
+                    <div className='row'>
+                        <div className='col-12'>
+                            <div className='text-center vertical-center' style={justifyCenter}>              
+                                <div id='login-box' className='card'>
+                                    <div className='card-header font-weight-bold'>
+                                        Join a Game!
                                     </div>
-                                </form>
-                                <form onSubmit={this['handleLogout']}>
-                                    <div className='form-group'>
-                                        <button type='submit' value="Submit" className='btn btn-primary btn-lg btn-block login-btn' style={button}>Logout</button>
+                                    <div className='card-body'>
+                                        <form onSubmit={this['handleClick']}>
+                                            <div className='form-group'>
+                                                <button type='submit' value="Submit" className='btn btn-primary btn-lg btn-block login-btn' style={button}>Join</button>
+                                            </div>
+                                        </form>
+                                        <form onSubmit={this['handleLogout']}>
+                                            <div className='form-group'>
+                                                <button type='submit' value="Submit" className='btn btn-primary btn-lg btn-block login-btn' style={button}>Logout</button>
+                                            </div>
+                                        </form>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        } 
+
+        return (
+			<div className='container'>
+				<SketchLogo />
+				<SketchLogin />
+			</div>
+		);
     }
 }
   

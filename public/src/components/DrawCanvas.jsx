@@ -1,7 +1,9 @@
 import React from 'react';
 import SketchCanvas from './DrawBox.jsx';
-
+import SketchLogo from './SketchLogo';
+import SketchLogin from './Login';
 import '../pages/css/utilities.css';
+import UserProfile from './UserProfile';
 
 const centerCanvas = {
     height: '90vh',
@@ -269,45 +271,54 @@ export default class CanvasDraw extends React.Component {
         };
         
         render() {
-          return (
-            <div className='row' style={centerCanvas}>
-                <div className='col-12'>
-                    <div>
-                        <div onClick={this.handleColorGrey} value={this.brushColor}><SketchCanvas /></div>
-                        <div onClick={this.handleColorRed} value={this.brushColor}><SketchCanvas /></div>
-                        <div onClick={this.handleColorYellow} value={this.brushColor}><SketchCanvas /></div>
-
-                     
-                      
-                        <div className='text-center'>            
-                            <canvas
-                                width={this.props.canvasWidth}
-                                height={this.props.canvasHeight}
-                                style={{
-                                    background: '#fff',
-                                    touchAction: 'none',
-                                    ...this.props.style
-                                }}
-                                ref={canvas => {
-                                    if (canvas) {
-                                    this.canvas = canvas;
-                                    this.ctx = canvas.getContext('2d');
-                                    }
-                                }}
-                                onMouseDown={this.drawStart}
-                                onClick={() => false}
-                                onMouseUp={this.drawEnd}
-                                onMouseOut={this.drawEnd}
-                                onMouseMove={this.draw}
-                                onTouchStart={this.drawStart}
-                                onTouchMove={this.draw}
-                                onTouchEnd={this.drawEnd}
-                                onTouchCancel={this.drawEnd}
-                            />
+            if(UserProfile.isLoggedIn()) {
+                return (
+                    <div className='row' style={centerCanvas}>
+                        <div className='col-12'>
+                            <div>
+                                <div onClick={this.handleColorGrey} value={this.brushColor}><SketchCanvas /></div>
+                                <div onClick={this.handleColorRed} value={this.brushColor}><SketchCanvas /></div>
+                                <div onClick={this.handleColorYellow} value={this.brushColor}><SketchCanvas /></div>
+        
+                             
+                              
+                                <div className='text-center'>            
+                                    <canvas
+                                        width={this.props.canvasWidth}
+                                        height={this.props.canvasHeight}
+                                        style={{
+                                            background: '#fff',
+                                            touchAction: 'none',
+                                            ...this.props.style
+                                        }}
+                                        ref={canvas => {
+                                            if (canvas) {
+                                            this.canvas = canvas;
+                                            this.ctx = canvas.getContext('2d');
+                                            }
+                                        }}
+                                        onMouseDown={this.drawStart}
+                                        onClick={() => false}
+                                        onMouseUp={this.drawEnd}
+                                        onMouseOut={this.drawEnd}
+                                        onMouseMove={this.draw}
+                                        onTouchStart={this.drawStart}
+                                        onTouchMove={this.draw}
+                                        onTouchEnd={this.drawEnd}
+                                        onTouchCancel={this.drawEnd}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-          );
+                );
+            }
+
+            return (
+			    <div className='container'>
+				    <SketchLogo />
+				    <SketchLogin />
+			    </div>
+		);
         }
 }
