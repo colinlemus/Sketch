@@ -80,7 +80,7 @@ class SketchLogin extends React.Component {
             <div className='row'>
                 <div className='col-12'>
                     <div className='text-center vertical-center' style={justifyCenter}>              
-                        <div id='login-box' className='card'>
+                        <div id='login-box' className='card' box-shadow="0rem 0rem 100em 0rem rgba(0,0,0,0.4)!important">
                             <div className='card-header font-weight-bold'>Login</div>
                             <div className='card-body'>
                                 <form onSubmit={this['handleClick']}>
