@@ -52,6 +52,7 @@ class SketchLogin extends React.Component {
                 UserProfile.setEmail(response['data']['email']);
                 UserProfile.setFirstName(response['data']['firstName']);
                 UserProfile.setLastName(response['data']['lastName']);
+                UserProfile.setLoggedIn(true);
                 this.props.history.push('/game-lobby');
         } else {
                 console.log("The username and password don't match, or do not exist.");
@@ -80,7 +81,7 @@ class SketchLogin extends React.Component {
             <div className='row'>
                 <div className='col-12'>
                     <div className='text-center vertical-center' style={justifyCenter}>              
-                        <div id='login-box' className='card' box-shadow="0rem 0rem 100em 0rem rgba(0,0,0,0.4)!important">
+                        <div id='login-box' className='card'>
                             <div className='card-header font-weight-bold'>Login</div>
                             <div className='card-body'>
                                 <form onSubmit={this['handleClick']}>
