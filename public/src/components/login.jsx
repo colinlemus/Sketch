@@ -52,6 +52,7 @@ class SketchLogin extends React.Component {
                 UserProfile.setEmail(response['data']['email']);
                 UserProfile.setFirstName(response['data']['firstName']);
                 UserProfile.setLastName(response['data']['lastName']);
+                UserProfile.setLoggedIn(true);
                 this.props.history.push('/game-lobby');
         } else {
                 console.log("The username and password don't match, or do not exist.");
