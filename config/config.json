@@ -5,5 +5,13 @@
 		"database": "sketch_db",
 		"host": "127.0.0.1",
 		"dialect": "mysql"
+	},
+
+	"production": {
+		"username": "b3352de8a8d55c",
+		"password": "6b40a354",
+		"database": "heroku_b07f5cb39a9c320",
+		"host": "us-cdbr-iron-east-01.cleardb.net",
+		"dialect": "mysql"
 	}
 }

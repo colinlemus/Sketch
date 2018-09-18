@@ -42,7 +42,7 @@ class JoinGame extends React.Component {
     }
 
     render() {
-        if(UserProfile.isLoggedIn()) {
+        if(UserProfile.isLoggedIn() == 'true') {
             return (
                 <div className='container'>
                     <SketchLogo />
@@ -71,7 +71,7 @@ class JoinGame extends React.Component {
                     </div>
                 </div>
             );
-        } 
+        }
 
         return (
             <div className='container'>
