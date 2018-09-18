@@ -333,7 +333,7 @@ export default class CanvasDraw extends React.Component {
         };
         
         render() {
-            if(UserProfile.isLoggedIn()) {
+            // if(UserProfile.isLoggedIn() == "true") {
                 return (
                     <div> 
                         <div className='row' style={centerCanvas}>
@@ -384,6 +384,10 @@ export default class CanvasDraw extends React.Component {
                         </div>
                     </div>
                 );
-            }
+            // } else {
+            //     return (
+            //         <h1>error</h1>
+            //     )
+            // }
         }
     }
