@@ -4,32 +4,38 @@ var UserProfile = (function () {
         password: '',
         email: '',
         firstName: '',
-        lastName: ''
+        lastName: '',
+        logged: false
     }
 
     function setUsername(username) {
         user['username'] = username;
-        sessionStorage.setItem("username", user['username']);
+        localStorage.setItem("username", user['username']);
     }
 
     function setPassword(password) {
         user['password'] = password;
-        sessionStorage.setItem("password", user['password']);
+        localStorage.setItem("password", user['password']);
     }
 
     function setEmail(email) {
        user['email'] = email;
-       sessionStorage.setItem("email", user['email']);
+       localStorage.setItem("email", user['email']);
     }
 
     function setFirstName(firstName) {
        user['firstName'] = firstName;
-       sessionStorage.setItem("firstName", user['firstName']);
+       localStorage.setItem("firstName", user['firstName']);
     }
 
     function setLastName(lastName) {
        user['lastName'] = lastName;
-       sessionStorage.setItem("lastName", user['lastName']);
+       localStorage.setItem("lastName", user['lastName']);
+    }
+
+    function setLoggedIn(logged) {
+        user['logged'] = logged;
+        localStorage.setItem("logged", user['logged']);
     }
 
     function getUsername() {
@@ -51,6 +57,10 @@ var UserProfile = (function () {
     function getLastName() {
         return user['lastName'];
     }
+    
+    function isLoggedIn() {
+        return user['logged'];
+    }
 
     return {
         setUsername: setUsername,
@@ -58,11 +68,13 @@ var UserProfile = (function () {
         setEmail: setEmail,
         setFirstName: setFirstName,
         setLastName: setLastName,
+        setLoggedIn: setLoggedIn,
         getUsername: getUsername,
         getPassword: getPassword,
         getEmail: getEmail,
         getFirstName: getFirstName,
-        getLastName: getLastName
+        getLastName: getLastName,
+        isLoggedIn: isLoggedIn
     }
 })();
 

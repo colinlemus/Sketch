@@ -1,7 +1,9 @@
 import React from 'react';
 import SketchCanvas from './DrawBox.jsx';
-
+import SketchLogo from './SketchLogo';
+import SketchLogin from './Login';
 import '../pages/css/utilities.css';
+import UserProfile from './UserProfile';
 
 const centerCanvas = {
     //height: '90vh',
@@ -331,55 +333,57 @@ export default class CanvasDraw extends React.Component {
         };
         
         render() {
-          return (
+            if(UserProfile.isLoggedIn()) {
+                return (
                     <div> 
-                    <div className='row' style={centerCanvas}>
-                        <div className='col-12'>
-                            <div className='text-center'>            
-                                <canvas
-                                    width={this.props.canvasWidth}
-                                    height={this.props.canvasHeight}
-                                    style={{
-                                        background: '#fff',
-                                        touchAction: 'none',
-                                        ...this.props.style
-                                    }}
-                                    ref={canvas => {
-                                        if (canvas) {
-                                        this.canvas = canvas;
-                                        this.ctx = canvas.getContext('2d');
-                                        }
-                                    }}
-                                    onMouseDown={this.drawStart}
-                                    onClick={() => false}
-                                    onMouseUp={this.drawEnd}
-                                    onMouseOut={this.drawEnd}
-                                    onMouseMove={this.draw}
-                                    onTouchStart={this.drawStart}
-                                    onTouchMove={this.draw}
-                                    onTouchEnd={this.drawEnd}
-                                    onTouchCancel={this.drawEnd}
-                                />
+                        <div className='row' style={centerCanvas}>
+                            <div className='col-12'>
+                                <div className='text-center'>            
+                                    <canvas
+                                        width={this.props.canvasWidth}
+                                        height={this.props.canvasHeight}
+                                        style={{
+                                            background: '#fff',
+                                            touchAction: 'none',
+                                            ...this.props.style
+                                        }}
+                                        ref={canvas => {
+                                            if (canvas) {
+                                            this.canvas = canvas;
+                                            this.ctx = canvas.getContext('2d');
+                                            }
+                                        }}
+                                        onMouseDown={this.drawStart}
+                                        onClick={() => false}
+                                        onMouseUp={this.drawEnd}
+                                        onMouseOut={this.drawEnd}
+                                        onMouseMove={this.draw}
+                                        onTouchStart={this.drawStart}
+                                        onTouchMove={this.draw}
+                                        onTouchEnd={this.drawEnd}
+                                        onTouchCancel={this.drawEnd}
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="row">
+                        <div className="row">
                             <div className="col-8">
                                 <div style={centerButtons}>
-                                <div onClick={this.handleColorWhite} value={this.brushColor}><img style={pics}src="http://www.airsciences.org.uk/geometry/obj933geo851shd124pg17p170.png"></img></div>
-                                <div onClick={this.handleColorGrey} value={this.brushColor}><img src="http://poppin.imgix.net/products/swatch/swatch_light_gray.jpg?w=50&h=50"></img></div>
-                                <div onClick={this.handleColorRed} value={this.brushColor}><img style={pics}src="https://images-na.ssl-images-amazon.com/images/I/41d-kZxsuIL._SY450_.jpg"></img></div>
-                                <div onClick={this.handleColorOrange} value={this.brushColor}><img style={pics}src="http://jdrquest.com/wp-content/uploads/2014/12/orange-box.jpg"></img></div>
-                                <div onClick={this.handleColorYellow} value={this.brushColor}><img style={pics}src="http://sohme.com/wp-content/uploads/2015/07/yellow.png"></img></div>
-                                <div onClick={this.handleColorGreen} value={this.brushColor}><img style={pics}src="https://thumbs.dreamstime.com/t/ink-watercolor-paint-splatter-transition-chroma-key-green-screen-background-effect-96651302.jpg"></img></div>
-                                <div onClick={this.handleColorLBlue} value={this.brushColor}><img style={pics}src="http://na.lvlt.sims3store.cdn.ea.com/u/f/sims/sims3/sims3store/mygoodies/avatarbackgrounds_free_solidlightblue/Thumbnail_300x300.png"></img></div>
-                                <div onClick={this.handleColorBlue} value={this.brushColor}><img style={pics}src="http://backgroundcheckall.com/wp-content/uploads/2017/12/blue-background-plain-4.jpg"></img></div>
-                                <div onClick={this.handleColorPink} value={this.brushColor}><img style={pics}src="http://getwallpapers.com/wallpaper/full/d/d/1/160938.jpg"></img></div>
-                                <div onClick={this.handleColorPurple} value={this.brushColor}><img style={pics}src="https://wallpapercave.com/wp/MuIV2JN.jpg"></img></div>
-                            </div>                        
+                                    <div onClick={this.handleColorWhite} value={this.brushColor}><img style={pics}src="http://www.airsciences.org.uk/geometry/obj933geo851shd124pg17p170.png"></img></div>
+                                    <div onClick={this.handleColorGrey} value={this.brushColor}><img src="http://poppin.imgix.net/products/swatch/swatch_light_gray.jpg?w=50&h=50"></img></div>
+                                    <div onClick={this.handleColorRed} value={this.brushColor}><img style={pics}src="https://images-na.ssl-images-amazon.com/images/I/41d-kZxsuIL._SY450_.jpg"></img></div>
+                                    <div onClick={this.handleColorOrange} value={this.brushColor}><img style={pics}src="http://jdrquest.com/wp-content/uploads/2014/12/orange-box.jpg"></img></div>
+                                    <div onClick={this.handleColorYellow} value={this.brushColor}><img style={pics}src="http://sohme.com/wp-content/uploads/2015/07/yellow.png"></img></div>
+                                    <div onClick={this.handleColorGreen} value={this.brushColor}><img style={pics}src="https://thumbs.dreamstime.com/t/ink-watercolor-paint-splatter-transition-chroma-key-green-screen-background-effect-96651302.jpg"></img></div>
+                                    <div onClick={this.handleColorLBlue} value={this.brushColor}><img style={pics}src="http://na.lvlt.sims3store.cdn.ea.com/u/f/sims/sims3/sims3store/mygoodies/avatarbackgrounds_free_solidlightblue/Thumbnail_300x300.png"></img></div>
+                                    <div onClick={this.handleColorBlue} value={this.brushColor}><img style={pics}src="http://backgroundcheckall.com/wp-content/uploads/2017/12/blue-background-plain-4.jpg"></img></div>
+                                    <div onClick={this.handleColorPink} value={this.brushColor}><img style={pics}src="http://getwallpapers.com/wallpaper/full/d/d/1/160938.jpg"></img></div>
+                                    <div onClick={this.handleColorPurple} value={this.brushColor}><img style={pics}src="https://wallpapercave.com/wp/MuIV2JN.jpg"></img></div>
+                                </div> 
+                            </div>                       
                         </div>
                     </div>
-                </div>
-            );
+                );
             }
         }
+    }

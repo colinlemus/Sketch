@@ -19,8 +19,8 @@ export default class extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    brushSize: '',
-    brushColor: ''
+      brushSize: '',
+      brushColor: ''
     }
     this.isMouseDown = false;
     this.linesArray = [];

@@ -2,5 +2,6 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Varela Round', sans-serif;
-	background: url(https://skribbl.io/res/background.png);
+	background: url('./assests/background.png');
+	background-size: 256px;
 }
