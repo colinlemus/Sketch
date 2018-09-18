@@ -19,8 +19,9 @@ var syncOptions = { force: false };
 
 // Websocket
 app.ws('/game-chat', function(ws, req) {
-	console.log("ws connected");
-	// debugger;
+//	console.log(ws,"ws");
+//	console.log(req,"req");
+
 	ws.on('message', function(msg) {
 	  console.log("backend msg: ", msg);
 

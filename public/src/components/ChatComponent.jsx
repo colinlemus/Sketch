@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { Widget, toggleWidget, addResponseMessage, addLinkSnippet, addUserMessage, senderPlaceHolder } from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
+import UserProfile from './UserProfile';
+import styles from '../pages/css/ChatComponentStyle.css';
 
-var answer = "daddy";
+
+const answer = "daddy";
+const user = localStorage.getItem("username");
+console.log("user",user);
 
 // import logo from './logo.svg';
-class App extends Component {
-
-    
+export default class Chat extends Component {
     
     state = {
         isConnected: false,
@@ -16,7 +19,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        addResponseMessage("Welcome to this awesome chat!");
+        // addResponseMessage("Welcome to this awesome chat!");
 
         // shows widget by default
         toggleWidget();
@@ -62,13 +65,14 @@ class App extends Component {
         //     message.data);
         // return;
         // }
-        // // handle incoming message
-        // console.log("THIS IS HAPPENING");
-        // debugger;
+
         addResponseMessage(message.data);
         console.log(`New message incoming! ${message.data}`);
+
+        // if you got the answer right
         if (message.data === answer) {
-            console.log("[username] got the answer!");
+            // console.log(localStorage.getItem("username") + " got the answer!");
+            console.log(user + " got the answer!");
         }
 
     }
@@ -87,27 +91,29 @@ class App extends Component {
 
     isAnswerCorrect = (newMessage) => {
         if (newMessage === answer) {
-            console.log("You got the answer!");
+            console.log(user + " got the answer!");
         }
     }
 
     render() {
         return (
             <div className="App">
-            <Widget
-                handleNewUserMessage={this.handleNewUserMessage}
-                // profileAvatar={insert user photo here}
-                title="Skitch Game Chat"
-                subtitle="username here"
-                // titleAvatar="insert chat name here --- e.g. carrot, broccoli, apple, etc."
-                senderPlaceHolder="type here plz"
-            />
+                <Widget
+                    handleNewUserMessage={this.handleNewUserMessage}
+                    // profileAvatar={insert user photo here}
+                    title='Skitch Game Chat'
+                    subtitle={user}
+                    // titleAvatar="insert chat name here --- e.g. carrot, broccoli, apple, etc."
+                    senderPlaceHolder='plz type here...'
+                    // fullScreenMode='false'
+                    autofocus='true'
+                    style={styles}
+                />
             </div>
         );
     }
 }
    
-export default App;
 
 
 
