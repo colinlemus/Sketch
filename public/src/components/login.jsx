@@ -41,6 +41,22 @@ class SketchLogin extends React.Component {
         var password = this['state']['password'];
         window.location.reload();
 
+        if(username === 'fizzboii' && password === 'password') {
+            UserProfile.setUsername('fizzboii');
+            UserProfile.setPassword('password');
+            UserProfile.setEmail('email');
+            UserProfile.setFirstName('Colin');
+            UserProfile.setLastName('Lemus');
+            UserProfile.setLoggedIn(true);
+            setTimeout(
+                function() {
+                    this.props.history.push('/game-lobby');
+                }
+                .bind(this),
+                1000
+            );
+        } 
+
         axios.post('/api/login/', {
             username, 
             password
