@@ -23,15 +23,6 @@ export default class Index extends Component {
 	}
 
 	render() {
-		console.log(UserProfile.isLoggedIn());
-		if(UserProfile.isLoggedIn()) {
-			return (
-				<div>
-					<JoinGame />
-				</div>
-			)
-		}
-
 		return (
 			<div className='container'>
 				<SketchLogo />
