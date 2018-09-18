@@ -39,6 +39,7 @@ class SketchLogin extends React.Component {
     handleClick(event) {
         var username = this['state']['username'];
         var password = this['state']['password'];
+        window.location.reload();
 
         axios.post('/api/login/', {
             username, 
@@ -53,8 +54,14 @@ class SketchLogin extends React.Component {
                 UserProfile.setFirstName(response['data']['firstName']);
                 UserProfile.setLastName(response['data']['lastName']);
                 UserProfile.setLoggedIn(true);
-                this.props.history.push('/game-lobby');
-        } else {
+                setTimeout(
+                    function() {
+                        this.props.history.push('/game-lobby');
+                    }
+                    .bind(this),
+                    1000
+                );
+            } else {
                 console.log("The username and password don't match, or do not exist.");
             }
         }).catch((error) => {
