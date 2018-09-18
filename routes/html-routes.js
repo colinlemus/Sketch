@@ -5,15 +5,7 @@ module.exports = function(app) {
 		res.sendFile(path.join(__dirname, '../', 'public', 'build', 'index.html'));
 	});
 
-	// app.get('*', function(req, res) {
-	// 	console.log("req",req);
-	// 	res.sendFile(path.join(__dirname, '../', 'public', 'build', 'index.html'));
-	// });
-
-	// app.get(/^.(?!websocket).*$/, (req, res) => {
-	// 	res.sendFile(path.join(__dirname, '../', 'public', 'build', 'index.html'));
-	// });
-
-	
-
+	app.use((req, res, next) => {
+		res.sendFile(path.join(__dirname, '../', 'public', 'build', 'index.html'));
+	});
 };
