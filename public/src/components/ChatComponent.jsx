@@ -24,7 +24,7 @@ export default class Chat extends Component {
         // shows widget by default
         toggleWidget();
 
-        let webSocketString = 'ws://' + window['location']['hostname'].toString() + ':8080/game-chat';
+        let webSocketString = 'ws://' + window['location']['hostname'].toString() + ':8080/game';
         console.log(webSocketString);
 
         let connection = new WebSocket(webSocketString);
