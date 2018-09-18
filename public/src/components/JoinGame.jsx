@@ -74,11 +74,14 @@ class JoinGame extends React.Component {
         } 
 
         return (
-			<div className='container'>
-				<SketchLogo />
-				<SketchLogin />
-			</div>
-		);
+            <div className='container'>
+                <SketchLogo />
+                <h1 className='text-center font-weight-bold' style={{color:'white'}}>
+                    Sorry, but the page you tried visiting doesn't exist!
+                    <div>Try logging in!</div>
+                </h1>
+            </div>
+        );
     }
 }
   
