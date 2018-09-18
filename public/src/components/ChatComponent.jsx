@@ -3,6 +3,8 @@ import { Widget, toggleWidget, addResponseMessage, addLinkSnippet, addUserMessag
 import 'react-chat-widget/lib/styles.css';
 
 var answer = "daddy";
+var user = localStorage.getItem("username");
+console.log("user",user);
 
 // import logo from './logo.svg';
 class App extends Component {
@@ -59,13 +61,14 @@ class App extends Component {
         //     message.data);
         // return;
         // }
-        // // handle incoming message
-        // console.log("THIS IS HAPPENING");
-        // debugger;
+
         addResponseMessage(message.data);
         console.log(`New message incoming! ${message.data}`);
+
+        // if you got the answer right
         if (message.data === answer) {
-            console.log("[username] got the answer!");
+            // console.log(localStorage.getItem("username") + " got the answer!");
+            console.log(user + " got the answer!");
         }
 
     }
@@ -84,7 +87,7 @@ class App extends Component {
 
     isAnswerCorrect = (newMessage) => {
         if (newMessage === answer) {
-            console.log("You got the answer!");
+            console.log(user + " got the answer!");
         }
     }
 
