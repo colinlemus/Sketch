@@ -345,7 +345,8 @@ export default class CanvasDraw extends React.Component {
           this.y = newY;
         };
         render() {
-            //if(UserProfile.isLoggedIn()) {
+            // if(UserProfile.isLoggedIn() == "true") {
+
                 return (
                     <div>
                         <div id="uwu"style={buttons}>PlaceHolder</div>
@@ -397,6 +398,10 @@ export default class CanvasDraw extends React.Component {
                         </div>
                     </div>
                 );
-            }
+            // } else {
+            //     return (
+            //         <h1>error</h1>
+            //     )
+            // }
         }
    // }
