@@ -26,15 +26,15 @@ export default class Index extends Component {
 		return (
 			<div className='container'>
 				<SketchLogo />
-				<div class="row">
-					<div class="col-2" style={boxBorder}>
+				<div className="row">
+					<div className="col-2" style={boxBorder}>
 						Game Lobby user stuff here
 					</div>
 
-					<div class="col-7" style={boxBorder}>
+					<div className="col-7" style={boxBorder}>
 						<CanvasDraw />
 					</div>
-					<div class="col-3" style={boxBorder}>
+					<div className="col-3" style={boxBorder}>
 						<Chat />
 					</div>
 				</div>
