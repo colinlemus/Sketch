@@ -1,11 +1,11 @@
 var UserProfile = (function () {
     var user = {
-        username: '',
-        password: '',
-        email: '',
-        firstName: '',
-        lastName: '',
-        logged: false
+        username: localStorage.getItem('username') || '',
+        password: localStorage.getItem('password') || '',
+        email: localStorage.getItem('email') || '',
+        firstName: localStorage.getItem('firstName') || '',
+        lastName:localStorage.getItem('lastName') ||  '',
+        logged: localStorage.getItem('logged') || false
     }
 
     function setUsername(username) {
@@ -35,7 +35,7 @@ var UserProfile = (function () {
 
     function setLoggedIn(logged) {
         user['logged'] = logged;
-        localStorage.setItem("logged", user['logged']);
+        localStorage.setItem('logged', user['logged']);
     }
 
     function getUsername() {
