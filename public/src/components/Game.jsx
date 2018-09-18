@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import SketchLogin from './Login';
-import SketchLogo from './SketchLogo';
+import React from 'react';
+import '../pages/css/SketchLogin.css';
 import '../pages/css/utilities.css';
 import UserProfile from './UserProfile';
-import JoinGame from './JoinGame';
+import SketchLogo from './SketchLogo';
+import { withRouter } from 'react-router-dom';
 import CanvasDraw from './DrawCanvas';
 import Chat from './ChatComponent';
 
@@ -13,32 +13,45 @@ const boxBorder = {
 	padding: '0px'
 }
 
-export default class Index extends Component {
-	constructor() {
-		super();
-	}
+class Game extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+        this['state'] = {
 
-	componentDidMount() {
-		//whenever the page first loads
-	}
+        }
+    }
 
-	render() {
-		return (
-			<div className='container'>
-				<SketchLogo />
-				<div className="row">
-					<div className="col-2" style={boxBorder}>
-						Game Lobby user stuff here
-					</div>
-
-					<div className="col-7" style={boxBorder}>
-						<CanvasDraw />
-					</div>
-					<div className="col-3" style={boxBorder}>
-						<Chat />
-					</div>
-				</div>
-			</div>
-		);
-	}
+    render() {
+        if(UserProfile.isLoggedIn() == 'true') {
+            return(
+                <div className='container'>
+                    <SketchLogo />
+                    <div className="row">
+                        <div className="col-2" style={boxBorder}>
+                            Game Lobby user stuff here
+                        </div>
+        
+                        <div className="col-7" style={boxBorder}>
+                            <CanvasDraw />
+                        </div>
+                        <div className="col-3" style={boxBorder}>
+                            <Chat />
+                        </div>
+                    </div>
+                </div>
+            );
+        } else {
+            return (
+                <div className='container'>
+                    <SketchLogo />
+                    <h1 className='text-center font-weight-bold' style={{color:'white'}}>
+                        Sorry, but the page you tried visiting doesn't exist!
+                        <div>Try logging in!</div>
+                    </h1>
+                </div>
+            );
+        }
+    }
 }
+  
+export default withRouter(Game);
