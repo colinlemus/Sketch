@@ -21,7 +21,7 @@ var syncOptions = { force: false };
 
 // Websocket
 app.ws('/game-chat', function(ws, req) {
-	// console.log("ws",ws);
+	console.log("ws connected");
 	// debugger;
 	ws.on('message', function(msg) {
 	  console.log("backend msg: ", msg);
@@ -33,6 +33,12 @@ app.ws('/game-chat', function(ws, req) {
 		}
 	  })
 	});
+});
+
+app.use((req, res, next) => {
+	
+	console.log("Using middleware 404 handler");
+	res.sendFile(path.join(__dirname, 'public', 'build', 'index.html'));
 });
 
 
