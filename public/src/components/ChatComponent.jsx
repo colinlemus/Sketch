@@ -21,7 +21,10 @@ class App extends Component {
         // shows widget by default
         toggleWidget();
 
-        let connection = new WebSocket(`ws://localhost:8080/game-chat`);
+        let webSocketString = 'ws://' + window['location']['hostname'].toString() + ':8080/game-chat';
+        console.log(webSocketString);
+
+        let connection = new WebSocket(webSocketString);
         connection.onopen = this.onOpen;
         connection.onerror = this.onError;
         connection.onmessage = this.onMessage;
