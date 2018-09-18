@@ -24,11 +24,9 @@ module.exports = function(app) {
 
 
 
-
-
-
 // var URLexceptWS = function(URL) {
 // 	if (URL.indexOf(".websocket") >= 0) {
 // 		return 
 // 	}
 // }
+
