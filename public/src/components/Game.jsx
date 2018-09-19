@@ -6,6 +6,7 @@ import SketchLogo from './SketchLogo';
 import { withRouter } from 'react-router-dom';
 import CanvasDraw from './DrawCanvas';
 import Chat from './ChatComponent';
+import CurrentJoinedUsers from './CurrentJoinedUsers';
 
 const boxBorder = {
 	border: '1px solid black',
@@ -28,7 +29,7 @@ class Game extends React.Component {
                     <SketchLogo />
                     <div className="row">
                         <div className="col-2" style={boxBorder}>
-                            Game Lobby user stuff here
+                            <CurrentJoinedUsers />
                         </div>
         
                         <div className="col-7" style={boxBorder}>
