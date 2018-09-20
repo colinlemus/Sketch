@@ -105,8 +105,6 @@ export default class Chat extends Component {
                     subtitle={user}
                     // titleAvatar="insert chat name here --- e.g. carrot, broccoli, apple, etc."
                     senderPlaceHolder='plz type here...'
-                    // fullScreenMode='false'
-                    autofocus='true'
                     style={styles}
                 />
             </div>

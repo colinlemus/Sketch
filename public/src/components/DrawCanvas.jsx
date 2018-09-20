@@ -1,7 +1,7 @@
 import React from 'react';
-import SketchCanvas from './DrawBox.jsx';
-import SketchLogo from './SketchLogo';
-import SketchLogin from './Login';
+// import SketchCanvas from './DrawBox.jsx';
+// import SketchLogo from './SketchLogo';
+// import SketchLogin from './Login';
 import '../pages/css/utilities.css';
 import UserProfile from './UserProfile';
 
