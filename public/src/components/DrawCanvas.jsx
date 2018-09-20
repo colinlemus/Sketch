@@ -4,6 +4,7 @@ import React from 'react';
 // import SketchLogin from './Login';
 import '../pages/css/utilities.css';
 import UserProfile from './UserProfile';
+import WordMaker from './WordMaker';
 
 const centerCanvas = {
     //height: '90vh',
@@ -33,26 +34,12 @@ const pics = {
     width: "50px"
 }
 
-const height100 = {
-    height: '100%'
-}
-
-class wordThing extends React.Component {
-            words= {
-                word: "stuff",
-                valu: "_ _ _ _ _"
-            } 
-            render() {
-                return (
-                    <div></div>
-                );
-            }
-        };
-
 export default class CanvasDraw extends React.Component {
     static defaultProps = {
         loadTimeOffset: 5,
         brushSize: 6,
+
+
         canvasWidth: 300,
         canvasHeight: 150,
         disabled: false
@@ -84,11 +71,17 @@ export default class CanvasDraw extends React.Component {
     
     }
     chosenWord(event) {
-        const words = {
-            chosenWord:"stuff"
+        var letterUnder = [];
+        var currentWord;
+        var randomWord = Math.floor(Math.random() * 3);
+        var words = ["edean", "colin", "nick"]
+        
+        var fixedWord = words[randomWord];
+        for(var i=0;i<fixedWord.length; i++){
+            letterUnder.push("_")
         }
-        var fixedWord = words.chosenWord.replace(words.chosenWord, "_ _ _ _ _");
-        console.log(fixedWord);
+        currentWord = letterUnder.join(" ");
+        console.log(currentWord);
 }
     
     handleColorGrey(event) {
@@ -350,7 +343,7 @@ export default class CanvasDraw extends React.Component {
           this.y = newY;
         };
         render() {
-            return (
+        return (
                 <div style={height100}>
                             <div className='text-center' style={height100}>            
                                 <canvas
@@ -378,6 +371,7 @@ export default class CanvasDraw extends React.Component {
                                     onTouchEnd={this.drawEnd}
                                     onTouchCancel={this.drawEnd}
                                 />
+
                             </div>
                             {/* <div className="row">
                         <div className="col-12">
