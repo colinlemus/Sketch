@@ -1,3 +1,4 @@
+// JER for reference from package.json -  "heroku-postbuild": "cd public && npm install && npm run build",
 import React from 'react';
 import '../pages/css/SketchLogo.css';
 import '../pages/css/utilities.css';

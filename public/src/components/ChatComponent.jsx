@@ -24,7 +24,16 @@ export default class Chat extends Component {
         // shows widget by default
         toggleWidget();
 
-        let connection = new WebSocket(`ws://localhost:8080/game-chat`);
+        let port;
+        if (window['location']['port'] !== '') {
+            port = ':' + window['location']['port'];
+        } else {
+            port = ':8080';
+        }
+        let webSocketString = 'wss://' + window['location']['hostname'].toString() + port + '/game';
+        console.log(webSocketString);
+
+        let connection = new WebSocket(webSocketString);
         connection.onopen = this.onOpen;
         connection.onerror = this.onError;
         connection.onmessage = this.onMessage;
@@ -102,8 +111,6 @@ export default class Chat extends Component {
                     subtitle={user}
                     // titleAvatar="insert chat name here --- e.g. carrot, broccoli, apple, etc."
                     senderPlaceHolder='plz type here...'
-                    // fullScreenMode='false'
-                    autofocus='true'
                     style={styles}
                 />
             </div>

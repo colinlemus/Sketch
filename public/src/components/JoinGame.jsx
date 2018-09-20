@@ -28,7 +28,7 @@ class JoinGame extends React.Component {
     }
 
     handleClick() {
-        this['props']['history'].push('/draw');
+        this['props']['history'].push('/game');
     }
 
     handleLogout() {
@@ -42,7 +42,7 @@ class JoinGame extends React.Component {
     }
 
     render() {
-        if(UserProfile.isLoggedIn()) {
+        if(UserProfile.isLoggedIn() == 'true') {
             return (
                 <div className='container'>
                     <SketchLogo />
@@ -71,17 +71,17 @@ class JoinGame extends React.Component {
                     </div>
                 </div>
             );
-        } 
-
-        return (
-            <div className='container'>
-                <SketchLogo />
-                <h1 className='text-center font-weight-bold' style={{color:'white'}}>
-                    Sorry, but the page you tried visiting doesn't exist!
-                    <div>Try logging in!</div>
-                </h1>
-            </div>
-        );
+        } else {
+            return (
+                <div className='container'>
+                    <SketchLogo />
+                    <h1 className='text-center font-weight-bold' style={{color:'white'}}>
+                        Sorry, but the page you tried visiting doesn't exist!
+                        <div>Try logging in!</div>
+                    </h1>
+                </div>
+            );
+        }
     }
 }
   
