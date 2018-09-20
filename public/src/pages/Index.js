@@ -16,7 +16,7 @@ export default class Index extends Component {
 
 	render() {
 		console.log(UserProfile.isLoggedIn());
-		if(UserProfile.isLoggedIn()) {
+		if(UserProfile.isLoggedIn() == 'true') {
 			return (
 				<div>
 					<JoinGame />

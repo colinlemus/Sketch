@@ -17,12 +17,13 @@ require('./routes/html-routes')(app);
 
 var syncOptions = { force: false };
 
-
-
 // Websocket
-app.ws('/game-chat', function(ws, req) {
+app.ws('/game', function(ws, req) {
+<<<<<<< HEAD
 //	console.log(ws,"ws");
 //	console.log(req,"req");
+=======
+>>>>>>> 05d250b474e1319297fb61004e29b84d6c1baa0b
 
 	ws.on('message', function(msg) {
 	  console.log("backend msg: ", msg);
@@ -37,8 +38,6 @@ app.ws('/game-chat', function(ws, req) {
 });
 
 app.use((req, res, next) => {
-	
-	console.log("Using middleware 404 handler");
 	res.sendFile(path.join(__dirname, 'public', 'build', 'index.html'));
 });
 

@@ -2,9 +2,9 @@
 	"name": "node-handlebars-boilerplate",
 	"version": "1.0.0",
 	"description": "Project 2 Starter",
-	"main": "server.js",
+	"main": "index.js",
 	"scripts": {
-		"start": "node server.js",
+		"start": "node index.js",
 		"lint": "eslint **/*.js --quiet",
 		"fix": "eslint --fix .",
 		"test": "npm run lint && NODE_ENV=test mocha -u tdd --reporter spec --exit"
@@ -18,7 +18,7 @@
 		"express-ws": "^4.0.0",
 		"mysql2": "^1.5.3",
 		"path": "^0.12.7",
-		"sequelize": "^4.38.0",
+		"sequelize": "^4.38.1",
 		"socket.io": "^2.1.1",
 		"socket.io-client": "^2.1.1"
 	},
