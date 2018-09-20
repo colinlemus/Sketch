@@ -8,11 +8,29 @@ import CanvasDraw from './DrawCanvas';
 import Chat from './ChatComponent';
 import CurrentJoinedUsers from './CurrentJoinedUsers';
 
+// CSS - temp
 const boxBorder = {
 	border: '1px solid black',
 	margin: '0px',
 	padding: '0px'
-}
+};
+const midTop = {
+	border: '1px solid black',
+	margin: '0px',
+    padding: '0px',
+    height: '100px'
+};
+const midBottom = {
+	border: '1px solid black',
+	margin: '0px',
+    padding: '0px',
+    height: '567px'
+};
+const windowWidth = {
+	border: '1px solid black',
+    height: '667px',
+    width: '1200px'
+};
 
 const card = {
     width: '100%',
