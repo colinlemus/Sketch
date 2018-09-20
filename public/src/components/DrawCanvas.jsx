@@ -398,10 +398,5 @@ export default class CanvasDraw extends React.Component {
                         </div>
                     </div>
                 );
-            // } else {
-            //     return (
-            //         <h1>error</h1>
-            //     )
-            // }
+            }
         }
-   // }
