@@ -40,7 +40,7 @@ const card = {
 const cardBody = {
     width: '100%',
     background: 'rgb(0, 0, 0, 0.01)',
-    padding: '30px 20px 20px 20px',
+    padding: '40px 20px 20px 20px',
     height: '100%',
 }
 

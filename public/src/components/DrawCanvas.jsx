@@ -350,7 +350,7 @@ export default class CanvasDraw extends React.Component {
                 <div className='text-center'>            
                     <canvas
                         width='600px'
-                        height='550px'
+                        height='535px'
                         style={{
                             background: '#fff',
                             touchAction: 'none',
