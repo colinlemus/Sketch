@@ -383,7 +383,7 @@ export default class CanvasDraw extends React.Component {
                         <div className="row">
                             <div className="col-8">
                                 <div style={centerButtons}>
-                                    <div onClick={this.chosenWord} value={this.brushColor}><img style={pics}src="http://www.airsciences.org.uk/geometry/obj933geo851shd124pg17p170.png"></img></div>
+                                    <div onClick={this.handleColorWhite} value={this.brushColor}><img style={pics}src="http://www.airsciences.org.uk/geometry/obj933geo851shd124pg17p170.png"></img></div>
                                     <div onClick={this.handleColorGrey} value={this.brushColor}><img src="http://poppin.imgix.net/products/swatch/swatch_light_gray.jpg?w=50&h=50"></img></div>
                                     <div onClick={this.handleColorRed} value={this.brushColor}><img style={pics}src="https://images-na.ssl-images-amazon.com/images/I/41d-kZxsuIL._SY450_.jpg"></img></div>
                                     <div onClick={this.handleColorOrange} value={this.brushColor}><img style={pics}src="http://jdrquest.com/wp-content/uploads/2014/12/orange-box.jpg"></img></div>
