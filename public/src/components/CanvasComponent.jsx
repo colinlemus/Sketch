@@ -5,8 +5,8 @@ export default class extends Component {
     loadTimeOffset: 5,
     brushSize: 6,
     brushColor: '#FF0000',
-    canvasWidth: 500,
-    canvasHeight: 500,
+    canvasWidth: '100%',
+    canvasHeight: '100%',
     disabled: false
   };
   colorChange = (brushColor) => {
@@ -215,7 +215,7 @@ export default class extends Component {
         width={this.props.canvasWidth}
         height={this.props.canvasHeight}
         style={{
-          background: '#fff',
+          background: '',
           touchAction: 'none',
           ...this.props.style
         }}

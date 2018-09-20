@@ -32,6 +32,11 @@ const pics = {
     height: "50px",
     width: "50px"
 }
+
+const height100 = {
+    height: '100%'
+}
+
 class wordThing extends React.Component {
             words= {
                 word: "stuff",
@@ -48,8 +53,8 @@ export default class CanvasDraw extends React.Component {
     static defaultProps = {
         loadTimeOffset: 5,
         brushSize: 6,
-        canvasWidth: 600,
-        canvasHeight: 500,
+        canvasWidth: 300,
+        canvasHeight: 150,
         disabled: false
     };
     
@@ -346,17 +351,15 @@ export default class CanvasDraw extends React.Component {
         };
         render() {
             return (
-                <div>
-                    <div id="uwu"style={buttons}>PlaceHolder</div>
-                    <div className='row' style={centerCanvas}>
-                        <div className='col-12'>
-                            <div className='text-center'>            
+                <div style={height100}>
+                            <div className='text-center' style={height100}>            
                                 <canvas
-                                    width={this.props.canvasWidth}
-                                    height={this.props.canvasHeight}
+                                    width='600px'
+                                    height='600px'
                                     style={{
                                         background: '#fff',
                                         touchAction: 'none',
+                                        border: '1px solid gray',
                                         ...this.props.style
                                     }}
                                     ref={canvas => {
@@ -376,9 +379,7 @@ export default class CanvasDraw extends React.Component {
                                     onTouchCancel={this.drawEnd}
                                 />
                             </div>
-                        </div>
-                    </div>
-                    <div className="row">
+                            {/* <div className="row">
                         <div className="col-12">
                             <div style={centerButtons}>
                                 <div onClick={this.chosenWord} value={this.brushColor}><img style={pics}src="http://www.airsciences.org.uk/geometry/obj933geo851shd124pg17p170.png"></img></div>
@@ -392,9 +393,9 @@ export default class CanvasDraw extends React.Component {
                                 <div onClick={this.handleColorPink} value={this.brushColor}><img style={pics}src="http://getwallpapers.com/wallpaper/full/d/d/1/160938.jpg"></img></div>
                                 <div onClick={this.handleColorPurple} value={this.brushColor}><img style={pics}src="https://wallpapercave.com/wp/MuIV2JN.jpg"></img></div>
                             </div> 
-                        </div>                       
-                    </div>
-                </div>
+                        </div>                      
+                    </div>  */}
+                        </div>
             );
         }
    }

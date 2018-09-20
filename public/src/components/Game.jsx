@@ -14,6 +14,18 @@ const boxBorder = {
 	padding: '0px'
 }
 
+const card = {
+    width: '100%',
+    height: '100%',
+}
+
+const cardBody = {
+    width: '100%',
+    background: 'rgb(0, 0, 0, 0.01)',
+    padding: '30px 20px 20px 20px',
+    height: '100%',
+}
+
 class Game extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -27,15 +39,20 @@ class Game extends React.Component {
         // if(UserProfile.isLoggedIn() == 'true') {
             return(
                 <div className='container'>
-                    <br></br>
-                    <SketchLogo />
+                    {/* <br></br> */}
+                    {/* <SketchLogo /> */}
                     <div className="row">
                         <div className="col-2" style={boxBorder}>
                             <CurrentJoinedUsers />
                         </div>
         
                         <div className="col-7" style={boxBorder}>
-                            <CanvasDraw />
+                            <div className='card' style={card}>
+                                <div className='card-header text-center font-weight-bold'>Word</div>
+                                <div className='card-body' style={cardBody}>
+                                    <CanvasDraw />
+                                </div>
+                            </div>
                         </div>
                         <div className="col-3" style={boxBorder}>
                             <Chat />
