@@ -4,6 +4,7 @@ import SketchLogo from './SketchLogo';
 import SketchLogin from './Login';
 import '../pages/css/utilities.css';
 import UserProfile from './UserProfile';
+import WordMaker from './WordMaker';
 
 const centerCanvas = {
     //height: '90vh',
@@ -32,24 +33,14 @@ const pics = {
     height: "50px",
     width: "50px"
 }
-class wordThing extends React.Component {
-            words= {
-                word: "stuff",
-                valu: "_ _ _ _ _"
-            } 
-            render() {
-                return (
-                    <div></div>
-                );
-            }
-        };
+    
 
 export default class CanvasDraw extends React.Component {
     static defaultProps = {
         loadTimeOffset: 5,
         brushSize: 6,
         canvasWidth: 600,
-        canvasHeight: 500,
+        canvasHeight: 667,
         disabled: false
     };
     
@@ -79,11 +70,17 @@ export default class CanvasDraw extends React.Component {
     
     }
     chosenWord(event) {
-        const words = {
-            chosenWord:"stuff"
+        var letterUnder = [];
+        var currentWord;
+        var randomWord = Math.floor(Math.random() * 3);
+        var words = ["edean", "colin", "nick"]
+        
+        var fixedWord = words[randomWord];
+        for(var i=0;i<fixedWord.length; i++){
+            letterUnder.push("_")
         }
-        var fixedWord = words.chosenWord.replace(words.chosenWord, "_ _ _ _ _");
-        console.log(fixedWord);
+        currentWord = letterUnder.join(" ");
+        console.log(currentWord);
 }
     
     handleColorGrey(event) {
@@ -349,7 +346,9 @@ export default class CanvasDraw extends React.Component {
 
                 return (
                     <div>
-                        <div id="uwu"style={buttons}>PlaceHolder</div>
+                        <div id="uwu">
+                            <WordMaker />
+                        </div>
                         <div className='row' style={centerCanvas}>
                             <div className='col-12'>
                                 <div className='text-center'>            
@@ -383,7 +382,7 @@ export default class CanvasDraw extends React.Component {
                         <div className="row">
                             <div className="col-8">
                                 <div style={centerButtons}>
-                                    <div onClick={this.chosenWord} value={this.brushColor}><img style={pics}src="http://www.airsciences.org.uk/geometry/obj933geo851shd124pg17p170.png"></img></div>
+                                    <div onClick={this.handleColorWhite} value={this.brushColor}><img style={pics}src="http://www.airsciences.org.uk/geometry/obj933geo851shd124pg17p170.png"></img></div>
                                     <div onClick={this.handleColorGrey} value={this.brushColor}><img src="http://poppin.imgix.net/products/swatch/swatch_light_gray.jpg?w=50&h=50"></img></div>
                                     <div onClick={this.handleColorRed} value={this.brushColor}><img style={pics}src="https://images-na.ssl-images-amazon.com/images/I/41d-kZxsuIL._SY450_.jpg"></img></div>
                                     <div onClick={this.handleColorOrange} value={this.brushColor}><img style={pics}src="http://jdrquest.com/wp-content/uploads/2014/12/orange-box.jpg"></img></div>
@@ -398,10 +397,6 @@ export default class CanvasDraw extends React.Component {
                         </div>
                     </div>
                 );
-            // } else {
-            //     return (
-            //         <h1>error</h1>
-            //     )
-            // }
+            }
         }
-   // }
+                
