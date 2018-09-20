@@ -30,7 +30,7 @@ export default class Chat extends Component {
         } else {
             port = ':8080';
         }
-        let webSocketString = 'ws://' + window['location']['hostname'].toString() + port + '/game';
+        let webSocketString = 'wss://' + window['location']['hostname'].toString() + port + '/game';
         console.log(webSocketString);
 
         let connection = new WebSocket(webSocketString);
