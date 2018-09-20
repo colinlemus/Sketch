@@ -19,8 +19,11 @@ var syncOptions = { force: false };
 
 // Websocket
 app.ws('/game', function(ws, req) {
+<<<<<<< HEAD
 //	console.log(ws,"ws");
 //	console.log(req,"req");
+=======
+>>>>>>> 05d250b474e1319297fb61004e29b84d6c1baa0b
 
 	ws.on('message', function(msg) {
 	  console.log("backend msg: ", msg);
