@@ -346,6 +346,7 @@ export default class CanvasDraw extends React.Component {
         };
         render() {
         return (
+<<<<<<< Updated upstream
             <div>
                 <div className='text-center'>            
                     <canvas
@@ -373,6 +374,35 @@ export default class CanvasDraw extends React.Component {
                         onTouchEnd={this.drawEnd}
                         onTouchCancel={this.drawEnd}
                     />
+=======
+                <div>
+                            <div className='text-center'>            
+                                <canvas
+                                    width='600px'
+                                    height='600px'
+                                    style={{
+                                        background: '#fff',
+                                        touchAction: 'none',
+                                        border: '1px solid gray',
+                                        ...this.props.style
+                                    }}
+                                    ref={canvas => {
+                                        if (canvas) {
+                                        this.canvas = canvas;
+                                        this.ctx = canvas.getContext('2d');
+                                        }
+                                    }}
+                                    onMouseDown={this.drawStart}
+                                    onClick={() => false}
+                                    onMouseUp={this.drawEnd}
+                                    onMouseOut={this.drawEnd}
+                                    onMouseMove={this.draw}
+                                    onTouchStart={this.drawStart}
+                                    onTouchMove={this.draw}
+                                    onTouchEnd={this.drawEnd}
+                                    onTouchCancel={this.drawEnd}
+                                />
+>>>>>>> Stashed changes
 
                 </div>
                 {/* <div className="row">
