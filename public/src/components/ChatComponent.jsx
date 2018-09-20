@@ -3,11 +3,13 @@ import { Widget, toggleWidget, addResponseMessage, addLinkSnippet, addUserMessag
 import 'react-chat-widget/lib/styles.css';
 import UserProfile from './UserProfile';
 import styles from '../pages/css/ChatComponentStyle.css';
+import WordMaker from './WordMaker';
 
 // Temp answers
 const answer = "daddy";
 const user = localStorage.getItem("username");
 console.log("user",user);
+
 
 // import logo from './logo.svg';
 export default class Chat extends Component {
@@ -107,16 +109,18 @@ export default class Chat extends Component {
 
     render() {
         return (
-            <div className="App">
-                <Widget
-                    handleNewUserMessage={this.handleNewUserMessage}
-                    // profileAvatar={insert user photo here}
-                    title='Skitch Game Chat'
-                    subtitle={user}
-                    // titleAvatar="insert chat name here --- e.g. carrot, broccoli, apple, etc."
-                    senderPlaceHolder='plz type here...'
-                    style={styles}
-                />
+            <div>
+                <div className="App">
+                    <Widget
+                        handleNewUserMessage={this.handleNewUserMessage}
+                        // profileAvatar={insert user photo here}
+                        title='Skitch Game Chat'
+                        subtitle={user}
+                        // titleAvatar="insert chat name here --- e.g. carrot, broccoli, apple, etc."
+                        senderPlaceHolder='plz type here...'
+                        style={styles}
+                    />
+                </div>
             </div>
         );
     }
