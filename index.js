@@ -18,7 +18,7 @@ require('./routes/html-routes')(app);
 var syncOptions = { force: false };
 
 // Websocket
-app.ws('/game-chat', function(ws, req) {
+app.ws('/game', function(ws, req) {
 //	console.log(ws,"ws");
 //	console.log(req,"req");
 
