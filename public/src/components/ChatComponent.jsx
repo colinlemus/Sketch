@@ -4,7 +4,7 @@ import 'react-chat-widget/lib/styles.css';
 import UserProfile from './UserProfile';
 import styles from '../pages/css/ChatComponentStyle.css';
 
-
+// Temp answers
 const answer = "daddy";
 const user = localStorage.getItem("username");
 console.log("user",user);
@@ -25,12 +25,16 @@ export default class Chat extends Component {
         toggleWidget();
 
         let port;
-        if (window['location']['port'] !== '') {
+        if (window['location']['port'] === '') {
             port = ':' + window['location']['port'];
         } else {
             port = ':8080';
         }
-        let webSocketString = 'wss://' + window['location']['hostname'].toString() + port + '/game';
+        let wsProtocol = 'ws://';
+        if (window.location.protocol.substr(0,5) === 'https') {
+            wsProtocol = 'wss://'
+        }
+        let webSocketString = wsProtocol + window['location']['hostname'].toString() + port + '/game';
         console.log(webSocketString);
 
         let connection = new WebSocket(webSocketString);

@@ -5,8 +5,9 @@ var db = require('./models');
 var path = require('path');
 var app = express();
 var WSReadyStates = require('./constants/ws-ready-states');
-var expressWs = require('express-ws')(app); // Websocket
 var PORT = process.env.PORT || 8080;
+var expressWs = require('express-ws')(app); // Websocket
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -19,19 +20,16 @@ var syncOptions = { force: false };
 
 // Websocket
 app.ws('/game', function(ws, req) {
-<<<<<<< HEAD
-//	console.log(ws,"ws");
-//	console.log(req,"req");
-=======
->>>>>>> 05d250b474e1319297fb61004e29b84d6c1baa0b
 
 	ws.on('message', function(msg) {
 	  console.log("backend msg: ", msg);
 
 	  expressWs.getWss().clients.forEach(function(client) {
+		  console.log('# of clients connected',client._socket.server._connections);
 
 		if (client !== ws && client.readyState === WSReadyStates.OPEN) {
 			client.send(msg);
+			// console.log('msg',msg);
 		}
 	  })
 	});

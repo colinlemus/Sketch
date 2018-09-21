@@ -10,11 +10,29 @@ import CurrentJoinedUsers from './CurrentJoinedUsers';
 import WordMaker from './WordMaker';
 
 
+// CSS - temp
 const boxBorder = {
 	border: '1px solid black',
 	margin: '0px',
 	padding: '0px'
-}
+};
+const midTop = {
+	border: '1px solid black',
+	margin: '0px',
+    padding: '0px',
+    height: '100px'
+};
+const midBottom = {
+	border: '1px solid black',
+	margin: '0px',
+    padding: '0px',
+    height: '567px'
+};
+const windowWidth = {
+	border: '1px solid black',
+    height: '667px',
+    width: '1200px'
+};
 
 const card = {
     width: '100%',
@@ -24,7 +42,7 @@ const card = {
 const cardBody = {
     width: '100%',
     background: 'rgb(0, 0, 0, 0.01)',
-    padding: '30px 20px 20px 20px',
+    padding: '40px 20px 20px 20px',
     height: '100%',
 }
 

@@ -6,6 +6,8 @@ import '../pages/css/utilities.css';
 import UserProfile from './UserProfile';
 import WordMaker from './WordMaker';
 
+// CSS
+
 const centerCanvas = {
     //height: '90vh',
     margin:'15vh 0vw -1vh 0vw',
@@ -344,36 +346,37 @@ export default class CanvasDraw extends React.Component {
         };
         render() {
         return (
-                <div>
-                            <div className='text-center'>            
-                                <canvas
-                                    width='600px'
-                                    height='600px'
-                                    style={{
-                                        background: '#fff',
-                                        touchAction: 'none',
-                                        border: '1px solid gray',
-                                        ...this.props.style
-                                    }}
-                                    ref={canvas => {
-                                        if (canvas) {
-                                        this.canvas = canvas;
-                                        this.ctx = canvas.getContext('2d');
-                                        }
-                                    }}
-                                    onMouseDown={this.drawStart}
-                                    onClick={() => false}
-                                    onMouseUp={this.drawEnd}
-                                    onMouseOut={this.drawEnd}
-                                    onMouseMove={this.draw}
-                                    onTouchStart={this.drawStart}
-                                    onTouchMove={this.draw}
-                                    onTouchEnd={this.drawEnd}
-                                    onTouchCancel={this.drawEnd}
-                                />
 
-                            </div>
-                            {/* <div className="row">
+            <div>
+                <div className='text-center'>            
+                    <canvas
+                        width='600px'
+                        height='535px'
+                        style={{
+                            background: '#fff',
+                            touchAction: 'none',
+                            border: '1px solid gray',
+                            ...this.props.style
+                        }}
+                        ref={canvas => {
+                            if (canvas) {
+                            this.canvas = canvas;
+                            this.ctx = canvas.getContext('2d');
+                            }
+                        }}
+                        onMouseDown={this.drawStart}
+                        onClick={() => false}
+                        onMouseUp={this.drawEnd}
+                        onMouseOut={this.drawEnd}
+                        onMouseMove={this.draw}
+                        onTouchStart={this.drawStart}
+                        onTouchMove={this.draw}
+                        onTouchEnd={this.drawEnd}
+                        onTouchCancel={this.drawEnd}
+                    />
+
+                </div>
+                {/* <div className="row">
                         <div className="col-12">
                             <div style={centerButtons}>
                                 <div onClick={this.chosenWord} value={this.brushColor}><img style={pics}src="http://www.airsciences.org.uk/geometry/obj933geo851shd124pg17p170.png"></img></div>
@@ -389,7 +392,7 @@ export default class CanvasDraw extends React.Component {
                             </div> 
                         </div>                      
                     </div>  */}
-                        </div>
+            </div>
             );
         }
    }
