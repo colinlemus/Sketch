@@ -7,6 +7,8 @@ import { withRouter } from 'react-router-dom';
 import CanvasDraw from './DrawCanvas';
 import Chat from './ChatComponent';
 import CurrentJoinedUsers from './CurrentJoinedUsers';
+import WordMaker from './WordMaker';
+
 
 const boxBorder = {
 	border: '1px solid black',
@@ -48,7 +50,7 @@ class Game extends React.Component {
         
                         <div className="col-7" style={boxBorder}>
                             <div className='card' style={card}>
-                                <div className='card-header text-center font-weight-bold'>Word</div>
+                                <div className='card-header text-center font-weight-bold'>Word: <WordMaker /></div>
                                 <div className='card-body' style={cardBody}>
                                     <CanvasDraw />
                                 </div>

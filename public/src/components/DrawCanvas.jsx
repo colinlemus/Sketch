@@ -344,8 +344,8 @@ export default class CanvasDraw extends React.Component {
         };
         render() {
         return (
-                <div style={height100}>
-                            <div className='text-center' style={height100}>            
+                <div>
+                            <div className='text-center'>            
                                 <canvas
                                     width='600px'
                                     height='600px'

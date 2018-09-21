@@ -28,10 +28,10 @@ export default class WordMaker extends React.Component {
 
     render() {
         return(
-            <div>
-            <h1>Hello</h1>
-            <div>{this.chosenWord()}</div>
-            </div>
+            
+            <span>{this.chosenWord()}</span>
+            
         );
     }
 }
+
