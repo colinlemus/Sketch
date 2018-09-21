@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import CanvasDraw from './components/DrawCanvas';
 import GameChat from './components/ChatComponent';
 import GameLobby from './components/JoinGame';
-import Game from './components/Game';
+import Game from './components/Gameyeet';
 import SignUp from './components/SignUp';
 import ForgotPassword from './components/ForgotPassword';
 import SketchLogo from './components/SketchLogo';
