@@ -215,7 +215,7 @@ export default class Chat extends Component {
             underscore.push('_ ');
         }
 
-        if(localStorage.getItem('username') === 'fizzboii') {
+        if(localStorage.getItem('username') === 'colinlemus') {
             return (
                 <div>
                     Word: {this['state']['chosenWord']}
