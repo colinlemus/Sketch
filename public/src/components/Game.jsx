@@ -219,6 +219,7 @@ export default class Chat extends Component {
             return (
                 <div>
                     Word: {this['state']['chosenWord']}
+                    
                 </div>
             );
         } else {
