@@ -21,7 +21,6 @@ class JoinGame extends React.Component {
     constructor(props, context) {
         super(props, context);
         this['state'] = {
-
         }
 
         this['handleClick'] = this['handleClick'].bind(this);
@@ -31,6 +30,7 @@ class JoinGame extends React.Component {
         let name = localStorage.getItem("username");
         console.log(name);
         axios.post('/api/lobby', {onlineUser: name}).then((response) => {
+
         });
     }
     handleClick() {

@@ -24,7 +24,7 @@ module.exports = app => {
 	app.post("/api/lobby", function(req, res) {
 		console.log(req.body);
 		db.user.create({
-		  onlineUser: req.body.username,
+		  onlineUser: req.body.onlineUser,
 		}).then(function(dbuser) {
 		  res.json(dbuser);
 		});
