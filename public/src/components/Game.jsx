@@ -226,14 +226,14 @@ export default class Chat extends Component {
                             </div>
                         </div>
 
-                        <div className="col-xl-3" style={boxBorder}>
+                        <div className="col-xl-3 rounded-0" style={boxBorder}>
                             <Widget
                                 handleNewUserMessage={this.handleNewUserMessage}
                                 // profileAvatar={insert user photo here}
                                 title='Sketch Game Chat'
                                 subtitle={user}
                                 // titleAvatar="insert chat name here --- e.g. carrot, broccoli, apple, etc."
-                                senderPlaceHolder='plz type here...'
+                                senderPlaceHolder='Enter your message here!'
                                 style={styles}
                             />
                         </div>
