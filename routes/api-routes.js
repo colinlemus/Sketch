@@ -40,6 +40,7 @@ module.exports = app => {
 		console.log(req.body);
 		db.user.create({
 			onlineUser: req.body.onlineUser,
+			score: req.body.score
 		}).then(function (dbuser) {
 			res.json(dbuser);
 		});
