@@ -26,7 +26,6 @@ module.exports = app => {
 		db.user.create({
 		  onlineUser: req.body.username,
 		}).then(function(dbuser) {
-		  // We have access to the new todo as an argument inside of the callback function
 		  res.json(dbuser);
 		});
 	  });
