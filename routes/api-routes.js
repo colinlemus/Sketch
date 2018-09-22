@@ -7,14 +7,19 @@ module.exports = app => {
 		});
 	});
 
-	app.get('/api/login/:username/:password', (req, res) => {
-		db['userData'].findOne({
+	app.get('/api/word', (req, res) => {
+		db['word'].findAll({}).then(dbWord => {
+			res.json(dbWord);
+		});
+	});
+
+	app.delete('/api/word', (req, res) => {
+		db['word'].destroy({
 			where: {
-				username: req['params']['username'],
-				password: req['params']['password']
+				id: req['body']['id']
 			}
-		}).then(dbUserData => {
-			res.json(dbUserData);
+		}).then(dbWord => {
+			res.json(dbWord);
 		});
 	});
 
@@ -73,5 +78,4 @@ module.exports = app => {
 			res.json(dbUserData);
 		});
 	});
-
 };
