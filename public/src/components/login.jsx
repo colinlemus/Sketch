@@ -42,11 +42,13 @@ class SketchLogin extends React.Component {
         window.location.reload();
 
         if(username === 'fizzboii' && password === 'password') {
+            UserProfile.setID('1');
             UserProfile.setUsername('fizzboii');
             UserProfile.setPassword('password');
             UserProfile.setEmail('email');
             UserProfile.setFirstName('Colin');
             UserProfile.setLastName('Lemus');
+            UserProfile.setScore('0');
             UserProfile.setLoggedIn(true);
             setTimeout(
                 function() {
@@ -64,11 +66,13 @@ class SketchLogin extends React.Component {
             console.log(response);
             if(response['data'] !== null) {
                 console.log('Login successful.');
+                UserProfile.setID(response['data']['id']);
                 UserProfile.setUsername(response['data']['username']);
                 UserProfile.setPassword(response['data']['password']);
                 UserProfile.setEmail(response['data']['email']);
                 UserProfile.setFirstName(response['data']['firstName']);
                 UserProfile.setLastName(response['data']['lastName']);
+                UserProfile.setScore(response['data']['score']);
                 UserProfile.setLoggedIn(true);
                 setTimeout(
                     function() {

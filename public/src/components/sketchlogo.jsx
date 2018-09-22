@@ -13,7 +13,7 @@ class SketchLogo extends React.Component {
         return (
             <div className='row'>
                 <div className='col-12'>
-                    <div className='vertical-center' style={justifyCenter}>
+                    <div className="vertical-center" style={justifyCenter}>
                         <img id='sketch-logo' src={logo} alt={logo}></img>
                     </div>
                 </div>

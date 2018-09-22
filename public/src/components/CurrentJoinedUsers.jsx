@@ -19,7 +19,7 @@ class Game extends React.Component {
     render() {
         return(
             <div style={height100}>
-                <div className='card' style={height100}>
+                <div className='card rounded-0' style={height100}>
                     <div className='card-header text-center font-weight-bold'>Current Users:</div>
                     <div className='card-body' style={height100}></div>
                 </div>
