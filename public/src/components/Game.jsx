@@ -138,6 +138,9 @@ export default class Chat extends Component {
         //     message.data);
         // return;
         // }
+
+        addResponseMessage(message.data);
+        console.log(`New message incoming! ${message.data}`);
     }
 
     handleNewUserMessage = (newMessage) => {
@@ -208,7 +211,6 @@ export default class Chat extends Component {
         return (
             <div>
                 <div className='container'>
-                    {/* <br></br> */}
                     <div className='row'>
                         <div className='col-12'>
                             <div className="vertical-center-game" style={{justifyContent:'center', width:'256px', height:'150px'}}>
@@ -230,14 +232,14 @@ export default class Chat extends Component {
                             </div>
                         </div>
 
-                        <div className="col-xl-3" style={boxBorder}>
+                        <div className="col-xl-3 rounded-0" style={boxBorder}>
                             <Widget
                                 handleNewUserMessage={this.handleNewUserMessage}
                                 // profileAvatar={insert user photo here}
                                 title='Sketch Game Chat'
                                 subtitle={user}
                                 // titleAvatar="insert chat name here --- e.g. carrot, broccoli, apple, etc."
-                                senderPlaceHolder='plz type here...'
+                                senderPlaceHolder='Enter your message here!'
                                 style={styles}
                             />
                         </div>
