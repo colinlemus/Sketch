@@ -3,8 +3,6 @@ import React from 'react';
 // import SketchLogo from './SketchLogo';
 // import SketchLogin from './Login';
 import '../pages/css/utilities.css';
-import UserProfile from './UserProfile';
-import WordMaker from './WordMaker';
 
 // CSS
 
@@ -346,11 +344,12 @@ export default class CanvasDraw extends React.Component {
         };
         render() {
         return (
+
             <div>
-                <div className='text-center'>            
+                <div className='text-center'>        
                     <canvas
                         width='600px'
-                        height='600px'
+                        height='535px'
                         style={{
                             background: '#fff',
                             touchAction: 'none',

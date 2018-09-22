@@ -4,8 +4,6 @@ import './index.css';
 import Index from './pages/Index'
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
-import CanvasDraw from './components/DrawCanvas';
-import GameChat from './components/ChatComponent';
 import GameLobby from './components/JoinGame';
 import Game from './components/Game';
 import SignUp from './components/SignUp';
