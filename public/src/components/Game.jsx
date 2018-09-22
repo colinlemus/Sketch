@@ -4,6 +4,7 @@ import 'react-chat-widget/lib/styles.css';
 import CanvasDraw from './DrawCanvas';
 import CurrentJoinedUsers from './CurrentJoinedUsers';
 import styles from '../pages/css/ChatComponentStyle.css';
+import axios from 'axios';
 
 // Temp answers
 const boxBorder = {
@@ -43,6 +44,21 @@ export default class Chat extends Component {
         let words = ["uwugod", "colin", "nick"]
         this.setState({
             chosenWord: words[randomWord]
+        axios.get('/api/word/').then((response) => {
+            console.log(response);
+            let chosenWord = response['data'][0]['chosenWord'];
+            this.setState({
+                chosenWord
+            });
+            axios.delete('/api/word/', {
+                data: {
+                    id: response['data'][0]['id']
+                }
+            }).then(response => {
+                console.log(response);
+            });
+        }).catch((error) => {
+            console.log(error);
         });
     }
 
@@ -138,6 +154,8 @@ export default class Chat extends Component {
 		}else {
 			console.log("not right");
 		}
+  
+        }
     }
 
     handleUnderScore = () => {
