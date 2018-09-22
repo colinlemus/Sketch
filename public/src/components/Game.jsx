@@ -5,10 +5,17 @@ import CanvasDraw from './DrawCanvas';
 import CurrentJoinedUsers from './CurrentJoinedUsers';
 import styles from '../pages/css/ChatComponentStyle.css';
 import axios from 'axios';
+import UserProfile from './UserProfile';
+import logo from '../assests/logo.png';
+import '../pages/css/utilities.css';
+import '../pages/css/SketchLogo.css';
 
+const justifyCenter = {
+    justifyContent: 'center'
+}
 // Temp answers
 const boxBorder = {
-    border: '1px solid black',
+    border: '1px transparent black',
     margin: '0px',
     padding: '0px'
 };
@@ -35,8 +42,8 @@ export default class Chat extends Component {
         isConnected: false,
         messages: [],
         connection: null,
-		chosenWord: '',
-		score: 1
+        chosenWord: '',
+        score: 1
     }
 
     getChosedWord() {
@@ -44,6 +51,8 @@ export default class Chat extends Component {
         let words = ["uwugod", "colin", "nick"]
         this.setState({
             chosenWord: words[randomWord]
+        });
+
         axios.get('/api/word/').then((response) => {
             console.log(response);
             let chosenWord = response['data'][0]['chosenWord'];
@@ -136,25 +145,43 @@ export default class Chat extends Component {
     }
 
     handleCorrectAnswer = (incomingMessage) => {
-		if(this.state.score === 10){
-			alert("you win!");
-			this.setState({
-				score: 0
-			});
-			score = 0;
-		}
+        if (this.state.score === 10) {
+            alert("you win!");
+            this.setState({
+                score: 0
+            });
+            score = 0;
+        }
+
         if (incomingMessage === this['state']['chosenWord']) {
-			console.log(user + " got the answer!");
-			score++;
-			this.getChosedWord();
-			this.setState({
-				score: score
-			});
-			console.log(this.state.score);
-		}else {
-			console.log("not right");
-		}
-  
+            console.log(user + " got the answer!");
+            score++;
+            this.getChosedWord();
+            this.setState({
+                score: score
+            });
+
+            let username = localStorage.getItem('username');
+            UserProfile.setScore(score);
+            axios.post("/api/userData/", {
+                username,
+            }).then((response) => {
+                console.log(response);
+                console.log(response['data']['id']);
+                axios.put('/api/userData/', {
+                    id: response['data']['id'],
+                    firstName: response['data']['firstName'],
+                    lastName: response['data']['lastname'],
+                    email: response['data']['email'],
+                    username: response['data']['username'],
+                    password: response['data']['password'],
+                    score: score
+                }).catch((error) => {
+                    console.log(error);
+                });
+            });
+        } else {
+            console.log("not right");
         }
     }
 
@@ -166,7 +193,7 @@ export default class Chat extends Component {
 
         return (
             <div>
-                {underscore}
+                Word: {underscore}
             </div>
         );
     }
@@ -176,22 +203,28 @@ export default class Chat extends Component {
             <div>
                 <div className='container'>
                     {/* <br></br> */}
-                    {/* <SketchLogo /> */}
+                    <div className='row'>
+                        <div className='col-12'>
+                            <div className="vertical-center-game" style={{justifyContent:'center', width:'256px', height:'150px'}}>
+                                <img id='sketch-logo' src={logo} alt={logo}></img>
+                            </div>
+                        </div>
+                    </div>
                     <div className="row">
-                        <div className="col-2" style={boxBorder}>
+                        <div className="col-xl-2" style={boxBorder}>
                             <CurrentJoinedUsers />
                         </div>
 
-                        <div className="col-7" style={boxBorder}>
-                            <div className='card' style={card}>
-                                <div className='card-header text-center font-weight-bold'>Word:
-                                {this.handleUnderScore()}</div>
-                                <div className='card-body' style={cardBody}>
+                        <div className="col-xl-7 rounded-0" style={boxBorder}>
+                            <div className='card rounded-0' style={card}>
+                                <div className='card-header text-center font-weight-bold rounded-0'>{this.handleUnderScore()}</div>
+                                <div className='card-body rounded-0' style={cardBody}>
                                     <CanvasDraw />
                                 </div>
                             </div>
                         </div>
-                        <div className="col-3" style={boxBorder}>
+
+                        <div className="col-xl-3" style={boxBorder}>
                             <Widget
                                 handleNewUserMessage={this.handleNewUserMessage}
                                 // profileAvatar={insert user photo here}
@@ -208,9 +241,3 @@ export default class Chat extends Component {
         );
     }
 }
-
-
-
-
-
-
