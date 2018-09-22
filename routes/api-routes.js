@@ -7,41 +7,31 @@ module.exports = app => {
 		});
 	});
 
-	app.get('/api/word', (req, res) => {
-		db['word'].findAll({}).then(dbWord => {
-			res.json(dbWord);
-		});
-	});
-
-	app.delete('/api/word', (req, res) => {
-		db['word'].destroy({
+	app.post('/api/userData/', (req, res) => {
+		db['userData'].findOne({
 			where: {
-				id: req['body']['id']
+				username: req['body']['username']
 			}
-		}).then(dbWord => {
-			res.json(dbWord);
-		});
-	});
-
-	app.post('/api/userData', (req, res) => {
-		console.log(req['body']);
-		db['userData'].create({
-            email: req['body']['email'],
-            username: req['body']['username'],
-			password: req['body']['password'],
-			firstName: req['body']['firstName'],
-			lastName: req['body']['lastName']
 		}).then(dbUserData => {
 			res.json(dbUserData);
 		});
 	});
 
-	app.get('/api/userData/:id', (req, res) => {
-		console.log(req.params);
-		console.log(req.params.id);
+	app.put('/api/userData/', (req, res) => {
+		db['userData'].update(req['body'], {
+			where: {
+				id: req['body']['id']
+			}
+		}).then(dbUserData => {
+			res.json(dbUserData);
+		});
+	});
+
+	app.post('/api/login/', (req, res) => {
 		db['userData'].findOne({
 			where: {
-				id: req['params']['id']
+				username: req['body']['username'],
+				password: req['body']['password']
 			}
 		}).then(dbUserData => {
 			res.json(dbUserData);
@@ -68,14 +58,19 @@ module.exports = app => {
 		});
 	});
 
-	app.post('/api/login/', (req, res) => {
-		db['userData'].findOne({
+	app.get('/api/word', (req, res) => {
+		db['word'].findAll({}).then(dbWord => {
+			res.json(dbWord);
+		});
+	});
+
+	app.delete('/api/word', (req, res) => {
+		db['word'].destroy({
 			where: {
-				username: req['body']['username'],
-				password: req['body']['password']
+				id: req['body']['id']
 			}
-		}).then(dbUserData => {
-			res.json(dbUserData);
+		}).then(dbWord => {
+			res.json(dbWord);
 		});
 	});
 };
