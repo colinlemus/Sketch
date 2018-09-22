@@ -16,18 +16,25 @@ module.exports = app => {
 			res.json(dbUserData);
 		});
 	});
-
-	app.put('/api/userData/', (req, res) => {
-		db['userData'].update(req['body'], {
+	app.get('/api/lobby', (req, res) => {
+		db['user'].findAll({}).then(dbuser => {
+			res.json(dbuser);
+		});
+	});
+	app.post("/api/lobby", function(req, res) {
+		console.log(req.body);
+		db.user.create({
+		  onlineUser: req.body.username,
+		}).then(function(dbuser) {
+		  res.json(dbuser);
+		});
+	  });
+	app.put('/api/lobby/', (req, res) => {
+		db['user'].update(req['body'], {
 			where: {
 				id: req['body']['id']
 			}
-		}).then(dbUserData => {
-			res.json(dbUserData);
-		});
-	});
-	app.get('/api/lobby', (req, res) => {
-		db['user'].findAll({}).then(dbuser => {
+		}).then(dbuser => {
 			res.json(dbuser);
 		});
 	});

@@ -48,7 +48,10 @@ export default class Chat extends Component {
         chosenWord: '',
         score: 1
     }
-
+    addPlayer() {
+        let name = localStorage.getItem("username");
+        console.log(name);
+    }
     getChosedWord() {
         let randomWord = Math.floor(Math.random() * 3);
         let words = ["uwugod", "colin", "nick"]
