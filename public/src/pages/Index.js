@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SketchLogin from '../components/login';
+import SketchLogin from '../components/Login';
 import SketchLogo from '../components/SketchLogo';
 import '../pages/css/utilities.css';
 import UserProfile from '../components/UserProfile';

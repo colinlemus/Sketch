@@ -3,8 +3,6 @@ import React from 'react';
 // import SketchLogo from './SketchLogo';
 // import SketchLogin from './Login';
 import '../pages/css/utilities.css';
-import UserProfile from './UserProfile';
-import WordMaker from './WordMaker';
 
 // CSS
 

@@ -3,7 +3,6 @@ import '../pages/css/SketchLogin.css';
 import '../pages/css/utilities.css';
 import UserProfile from './UserProfile';
 import SketchLogo from './SketchLogo';
-import SketchLogin from './login';
 import { withRouter } from 'react-router-dom'
 
 const justifyCenter = {
