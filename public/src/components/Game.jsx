@@ -56,9 +56,9 @@ export default class Chat extends Component {
 
     getChosedWord() {
         let randomWord = Math.floor(Math.random() * 3);
-        let words = ["uwugod", "colin", "nick"]
+        let words = ["jason"];
         this.setState({
-            chosenWord: words[randomWord]
+            chosenWord: words[0]
         });
 
         axios.get('/api/word/').then((response) => {
@@ -192,19 +192,15 @@ export default class Chat extends Component {
 
             let username = localStorage.getItem('username');
             UserProfile.setScore(score);
-            axios.post("/api/userData/", {
+            axios.post("/api/lobby/", {
                 username,
             }).then((response) => {
                 console.log(response);
                 console.log(response['data']['id']);
-                axios.put('/api/userData/', {
+                axios.put('/api/lobby/', {
                     id: response['data']['id'],
-                    firstName: response['data']['firstName'],
-                    lastName: response['data']['lastname'],
-                    email: response['data']['email'],
-                    username: response['data']['username'],
-                    password: response['data']['password'],
-                    score: score
+                    onlineUser: response['data']['onlineUser'],
+                    socre: response['data']['score'],
                 }).catch((error) => {
                     console.log(error);
                 });
