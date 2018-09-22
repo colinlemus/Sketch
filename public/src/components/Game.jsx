@@ -215,11 +215,19 @@ export default class Chat extends Component {
             underscore.push('_ ');
         }
 
-        return (
-            <div>
-                Word: {underscore}
-            </div>
-        );
+        if(localStorage.getItem('username') === 'fizzboii') {
+            return (
+                <div>
+                    Word: {this['state']['chosenWord']}
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                    Word: {underscore}
+                </div>
+            );
+        }
     }
 
     render() {
