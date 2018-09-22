@@ -7,7 +7,7 @@ module.exports = app => {
 		});
 	});
 
-	app.post('/api/userData/', (req, res) => {
+	app.post('/api/userData', (req, res) => {
 		db['userData'].findOne({
 			where: {
 				username: req['body']['username']
@@ -16,20 +16,36 @@ module.exports = app => {
 			res.json(dbUserData);
 		});
 	});
+
+	app.post('/api/userData/create', (req, res) => {
+		console.log(req['body']);
+		db['userData'].create({
+            email: req['body']['email'],
+            username: req['body']['username'],
+			password: req['body']['password'],
+			firstName: req['body']['firstName'],
+			lastName: req['body']['lastName']
+		}).then(dbUserData => {
+			res.json(dbUserData);
+		});
+	});
+
 	app.get('/api/lobby', (req, res) => {
 		db['user'].findAll({}).then(dbuser => {
 			res.json(dbuser);
 		});
 	});
-	app.post("/api/lobby", function(req, res) {
+
+	app.post("/api/lobby", function (req, res) {
 		console.log(req.body);
 		db.user.create({
-		  onlineUser: req.body.onlineUser,
-		}).then(function(dbuser) {
-		  res.json(dbuser);
+			onlineUser: req.body.onlineUser,
+		}).then(function (dbuser) {
+			res.json(dbuser);
 		});
-	  });
-	app.put('/api/lobby/', (req, res) => {
+	});
+
+	app.put('/api/lobby', (req, res) => {
 		db['user'].update(req['body'], {
 			where: {
 				id: req['body']['id']
@@ -38,7 +54,18 @@ module.exports = app => {
 			res.json(dbuser);
 		});
 	});
-	app.post('/api/login/', (req, res) => {
+
+	app.delete('/api/lobby', (req, res) => {
+		db['user'].destroy({
+			where: {
+				id: req['body']['id']
+			}
+		}).then(dbuser => {
+			res.json(dbuser);
+		});
+	});
+
+	app.post('/api/login', (req, res) => {
 		db['userData'].findOne({
 			where: {
 				username: req['body']['username'],
@@ -49,7 +76,7 @@ module.exports = app => {
 		});
 	});
 
-	app.post('/api/forget/', (req, res) => {
+	app.post('/api/forget', (req, res) => {
 		db['userData'].findOne({
 			where: {
 				username: req['body']['username']
@@ -59,7 +86,7 @@ module.exports = app => {
 		});
 	});
 
-	app.put('/api/forget/', (req, res) => {
+	app.put('/api/forget', (req, res) => {
 		db['userData'].update(req['body'], {
 			where: {
 				id: req['body']['id']

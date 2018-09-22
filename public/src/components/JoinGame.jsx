@@ -6,7 +6,6 @@ import SketchLogo from './SketchLogo';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
-
 const justifyCenter = {
     justifyContent: 'center'
 }
@@ -26,17 +25,15 @@ class JoinGame extends React.Component {
         this['handleClick'] = this['handleClick'].bind(this);
         this['handleLogout'] = this['handleLogout'].bind(this);
     }
-    addPlayer() {
-        let name = localStorage.getItem("username");
-        console.log(name);
-        axios.post('/api/lobby', {onlineUser: name}).then((response) => {
 
+    addPlayer() {
+        axios.post('/api/lobby', { onlineUser: localStorage.getItem("username") }).then((response) => {
         });
     }
+
     handleClick() {
-        this['props']['history'].push('/game');
         this.addPlayer();
-        
+        this['props']['history'].push('/game');
     }
 
     handleLogout() {
@@ -45,18 +42,20 @@ class JoinGame extends React.Component {
         UserProfile.setEmail('');
         UserProfile.setFirstName('');
         UserProfile.setLastName('');
+        UserProfile.setID('');
+        UserProfile.setScore('');
         UserProfile.setLoggedIn(false);
         this['props']['history'].push('/');
     }
 
     render() {
-        if(UserProfile.isLoggedIn() == 'true') {
+        if (UserProfile.isLoggedIn() == 'true') {
             return (
                 <div className='container'>
                     <SketchLogo />
                     <div className='row'>
                         <div className='col-12'>
-                            <div className='text-center vertical-center' style={justifyCenter}>              
+                            <div className='text-center vertical-center' style={justifyCenter}>
                                 <div id='login-box' className='card'>
                                     <div className='card-header font-weight-bold'>
                                         Join a Game!
@@ -83,7 +82,7 @@ class JoinGame extends React.Component {
             return (
                 <div className='container'>
                     <SketchLogo />
-                    <h1 className='text-center font-weight-bold' style={{color:'white'}}>
+                    <h1 className='text-center font-weight-bold' style={{ color: 'white' }}>
                         Sorry, but the page you tried visiting doesn't exist!
                         <div>Try logging in!</div>
                     </h1>
@@ -92,5 +91,5 @@ class JoinGame extends React.Component {
         }
     }
 }
-  
+
 export default withRouter(JoinGame);

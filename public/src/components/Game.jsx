@@ -22,15 +22,15 @@ const boxBorder = {
 };
 
 const card = {
-	width: '100%',
-	height: '100%',
+    width: '100%',
+    height: '100%',
 }
 
 const cardBody = {
-	width: '100%',
-	background: 'rgb(0, 0, 0, 0.01)',
-	padding: '40px 20px 20px 20px',
-	height: '100%',
+    width: '100%',
+    background: 'rgb(0, 0, 0, 0.01)',
+    padding: '40px 20px 20px 20px',
+    height: '100%',
 }
 const user = localStorage.getItem("username");
 var score = 0;
@@ -48,10 +48,12 @@ export default class Chat extends Component {
         chosenWord: '',
         score: 1
     }
+
     addPlayer() {
         let name = localStorage.getItem("username");
         console.log(name);
     }
+
     getChosedWord() {
         let randomWord = Math.floor(Math.random() * 3);
         let words = ["uwugod", "colin", "nick"]
@@ -60,7 +62,7 @@ export default class Chat extends Component {
         });
 
         axios.get('/api/word/').then((response) => {
-            console.log(response);
+            // console.log(response);
             let chosenWord = response['data'][0]['chosenWord'];
             this.setState({
                 chosenWord
@@ -77,8 +79,24 @@ export default class Chat extends Component {
         });
     }
 
+    onUnload(event) {
+        axios.get('/api/lobby/').then((response) => {
+            console.log(response);
+            axios.delete('/api/lobby/', {
+                data: {
+                    id: response['data']['id']
+                }
+            }).then(response => {
+                console.log(response);
+            });
+        }).catch((error) => {
+            console.log(error);
+        });
+    }
+
     componentWillMount() {
         this.getChosedWord();
+        window.removeEventListener("beforeunload", this.onUnload);
     }
 
     componentDidMount() {
@@ -108,6 +126,8 @@ export default class Chat extends Component {
         this.setState({
             connection: connection
         });
+
+        window.addEventListener("beforeunload", this.onUnload);
     }
 
     onOpen = () => {
@@ -150,7 +170,7 @@ export default class Chat extends Component {
         this.handleCorrectAnswer(newMessage);
         if (!this.state.isConnected) { return; }
 
-        this.state.connection.send(newMessage);
+        this.state.connection.send(localStorage.getItem('username') + ": " + newMessage);
     }
 
     handleCorrectAnswer = (incomingMessage) => {
@@ -213,7 +233,7 @@ export default class Chat extends Component {
                 <div className='container'>
                     <div className='row'>
                         <div className='col-12'>
-                            <div className="vertical-center-game" style={{justifyContent:'center', width:'256px', height:'150px'}}>
+                            <div className="vertical-center-game" style={{ justifyContent: 'center', width: '256px', height: '150px' }}>
                                 <img id='sketch-logo' src={logo} alt={logo}></img>
                             </div>
                         </div>

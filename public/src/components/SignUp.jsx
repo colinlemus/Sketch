@@ -72,7 +72,7 @@ class SignUp extends React.Component {
         }
 
         console.log(payload);
-        axios.post('/api/userData', payload).then((response) => {
+        axios.post('/api/userData/create', payload).then((response) => {
             console.log(response);
             this.props.history.push('/');
         }).catch(function (error) {

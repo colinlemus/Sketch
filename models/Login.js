@@ -36,14 +36,6 @@ module.exports = function(sequelize, DataTypes) {
 				len: [1,255],
 			}
 		},
-		score: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			defaultValue: 0,
-			validate: {
-				len: [1,6]
-			}
-		}
 	});
 	
 	return UserData;

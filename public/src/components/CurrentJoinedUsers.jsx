@@ -18,44 +18,42 @@ class Game extends React.Component {
         }
     }
 
-    componentWillMount() {
-        this.handleGetUsers();
-    }
-
-    handleGetUsers() {
-        axios.get('/api/lobby').then(response => {
-            this.setState({
-                player: response['data'][0]['onlineUser']
-            });
-        });
+    componentDidMount() {
+        setInterval(function () {
+            axios.get('/api/lobby').then(response => {
+                this.setState({
+                    player: response['data']
+                });
+            })
+        }.bind(this), 1000);
     }
 
     getUsers() {
-        return(
+        return (
             <div>
-               {this.state.player.map(element => {
-                 return(
-                    <div>
-                        {element.online}
-                    </div>
-                 );
-               })}
+                {this.state.player.map(element => {
+                    return (
+                        <div className='text-center font-weight-bold'>
+                            {element.onlineUser} | {element.score}
+                        </div>
+                    );
+                })}
             </div>
         );
-   }
+    }
 
     render() {
-        return(
+        return (
             <div style={height100}>
                 <div className='card rounded-0' style={height100}>
-                    <div className='card-header text-center font-weight-bold'>Current Users:
-                    {this.getUsers}
-                    </div>
+                    <div className='card-header text-center font-weight-bold'>Current Users:</div>
+                    <br></br>
+                    {this.getUsers()}
                     <div className='card-body' style={height100}></div>
                 </div>
             </div>
         );
     }
 }
-  
+
 export default withRouter(Game);
