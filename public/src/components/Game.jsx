@@ -15,28 +15,31 @@ const justifyCenter = {
 }
 // Temp answers
 const boxBorder = {
+
     border: '1px transparent black',
     margin: '0px',
     padding: '0px'
 };
 
 const card = {
-    width: '100%',
-    height: '100%',
+	width: '100%',
+	height: '100%',
 }
 
 const cardBody = {
-    width: '100%',
-    background: 'rgb(0, 0, 0, 0.01)',
-    padding: '40px 20px 20px 20px',
-    height: '100%',
+	width: '100%',
+	background: 'rgb(0, 0, 0, 0.01)',
+	padding: '40px 20px 20px 20px',
+	height: '100%',
 }
 const user = localStorage.getItem("username");
 var score = 0;
 console.log("user", user);
 
+
 // import logo from './logo.svg';
 export default class Chat extends Component {
+
 
     state = {
         isConnected: false,

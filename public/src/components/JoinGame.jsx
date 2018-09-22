@@ -25,7 +25,6 @@ class JoinGame extends React.Component {
         this['handleClick'] = this['handleClick'].bind(this);
         this['handleLogout'] = this['handleLogout'].bind(this);
     }
-
     handleClick() {
         this['props']['history'].push('/game');
     }
