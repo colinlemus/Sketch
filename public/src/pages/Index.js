@@ -10,10 +10,6 @@ export default class Index extends Component {
 		super();
 	}
 
-	componentDidMount() {
-		//whenever the page first loads
-	}
-
 	render() {
 		console.log(UserProfile.isLoggedIn());
 		if(UserProfile.isLoggedIn() == 'true') {
