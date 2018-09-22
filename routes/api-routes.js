@@ -36,6 +36,16 @@ module.exports = app => {
 		});
 	});
 
+	app.get('/api/lobby/:username', (req, res) => {
+		db['user'].findAll({
+			where: {
+				onlineUser: req['params']['username']
+			}
+		}).then(dbuser => {
+			res.json(dbuser);
+		});
+	});
+
 	app.post("/api/lobby", function (req, res) {
 		console.log(req.body);
 		db.user.create({
@@ -49,7 +59,7 @@ module.exports = app => {
 	app.put('/api/lobby', (req, res) => {
 		db['user'].update(req['body'], {
 			where: {
-				id: req['body']['id']
+				onlineUser: req['body']['onlineUser']
 			}
 		}).then(dbuser => {
 			res.json(dbuser);

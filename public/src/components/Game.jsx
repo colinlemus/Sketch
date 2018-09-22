@@ -185,26 +185,25 @@ export default class Chat extends Component {
         if (incomingMessage === this['state']['chosenWord']) {
             console.log(user + " got the answer!");
             score++;
-            this.getChosedWord();
             this.setState({
                 score: score
             });
 
-            let onlineUser = localStorage.getItem('username');
             UserProfile.setScore(score);
-            axios.post("/api/lobby/", {
-                onlineUser,
-            }).then((response) => {
+            let onlineUser = localStorage.getItem('username');
+            console.log(onlineUser);
+            axios.get("/api/lobby/" + onlineUser).then((response) => {
                 console.log(response);
-                console.log(response['data']['id']);
+                console.log(response['data'][0]['id']);
                 axios.put('/api/lobby/', {
-                    id: response['data']['id'],
-                    onlineUser: response['data']['onlineUser'],
-                    score: response['data']['score'],
+                    id: response['data'][0]['id'],
+                    onlineUser: response['data'][0]['onlineUser'],
+                    score: localStorage.getItem('score'),
                 }).catch((error) => {
                     console.log(error);
                 });
             });
+            this.getChosedWord();
         } else {
             console.log("not right");
         }
