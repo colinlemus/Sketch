@@ -202,7 +202,6 @@ export default class Chat extends Component {
         return (
             <div>
                 <div className='container'>
-                    {/* <br></br> */}
                     <div className='row'>
                         <div className='col-12'>
                             <div className="vertical-center-game" style={{justifyContent:'center', width:'256px', height:'150px'}}>
