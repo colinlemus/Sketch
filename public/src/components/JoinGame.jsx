@@ -27,18 +27,16 @@ class JoinGame extends React.Component {
         this['handleClick'] = this['handleClick'].bind(this);
         this['handleLogout'] = this['handleLogout'].bind(this);
     }
+    addPlayer() {
+        let name = localStorage.getItem("username");
+        console.log(name);
+        axios.post('/api/lobby', {onlineUser: name}).then((response) => {
+        });
+    }
     handleClick() {
         this['props']['history'].push('/game');
-        // axios.get('/api/userData').then((response) => {
-        //     var answer = response.data[0].username;
-        //     axios.post('/api/lobby').then((response) => {
-        //         answer.push('/api/lobby');
-        //         console.log(answer);
-        //     });
-        //     console.log(response);
-        // }).catch(function (error) {
-        //     console.log(error);
-        // });
+        this.addPlayer();
+        
     }
 
     handleLogout() {
