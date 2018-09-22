@@ -25,6 +25,7 @@ const cardBody = {
     height: '100%',
 }
 const user = localStorage.getItem("username");
+var score = 0;
 console.log("user", user);
 
 // import logo from './logo.svg';
@@ -34,10 +35,15 @@ export default class Chat extends Component {
         isConnected: false,
         messages: [],
         connection: null,
-        chosenWord: ''
+		chosenWord: '',
+		score: 1
     }
 
     getChosedWord() {
+        let randomWord = Math.floor(Math.random() * 3);
+        let words = ["uwugod", "colin", "nick"]
+        this.setState({
+            chosenWord: words[randomWord]
         axios.get('/api/word/').then((response) => {
             console.log(response);
             let chosenWord = response['data'][0]['chosenWord'];
@@ -130,9 +136,25 @@ export default class Chat extends Component {
     }
 
     handleCorrectAnswer = (incomingMessage) => {
+		if(this.state.score === 10){
+			alert("you win!");
+			this.setState({
+				score: 0
+			});
+			score = 0;
+		}
         if (incomingMessage === this['state']['chosenWord']) {
-            console.log(user + " got the answer!");
-            this.getChosedWord();
+			console.log(user + " got the answer!");
+			score++;
+			this.getChosedWord();
+			this.setState({
+				score: score
+			});
+			console.log(this.state.score);
+		}else {
+			console.log("not right");
+		}
+  
         }
     }
 
