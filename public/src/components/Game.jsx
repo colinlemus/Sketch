@@ -200,7 +200,7 @@ export default class Chat extends Component {
                 axios.put('/api/lobby/', {
                     id: response['data']['id'],
                     onlineUser: response['data']['onlineUser'],
-                    socre: response['data']['score'],
+                    score: response['data']['score'],
                 }).catch((error) => {
                     console.log(error);
                 });
