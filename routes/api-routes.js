@@ -26,7 +26,11 @@ module.exports = app => {
 			res.json(dbUserData);
 		});
 	});
-
+	app.get('/api/lobby', (req, res) => {
+		db['user'].findAll({}).then(dbuser => {
+			res.json(dbuser);
+		});
+	});
 	app.post('/api/login/', (req, res) => {
 		db['userData'].findOne({
 			where: {
