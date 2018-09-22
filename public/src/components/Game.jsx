@@ -135,6 +135,9 @@ export default class Chat extends Component {
         //     message.data);
         // return;
         // }
+
+        addResponseMessage(message.data);
+        console.log(`New message incoming! ${message.data}`);
     }
 
     handleNewUserMessage = (newMessage) => {
