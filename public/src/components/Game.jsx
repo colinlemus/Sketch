@@ -190,10 +190,10 @@ export default class Chat extends Component {
                 score: score
             });
 
-            let username = localStorage.getItem('username');
+            let onlineUser = localStorage.getItem('username');
             UserProfile.setScore(score);
             axios.post("/api/lobby/", {
-                username,
+                onlineUser,
             }).then((response) => {
                 console.log(response);
                 console.log(response['data']['id']);
